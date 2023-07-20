@@ -27,7 +27,12 @@ function FirstChildren() {
       <div
         onMouseEnter={projectEnter}
         onMouseLeave={projectLeave}
-        style={{ width: "100px", height: "200vh", background: "#eee" }}
+        style={{
+          width: "100px",
+          height: "200vh",
+          background: "#eee",
+          border: "2px dashed black",
+        }}
       ></div>
       <div
         onMouseEnter={contactEnter}
