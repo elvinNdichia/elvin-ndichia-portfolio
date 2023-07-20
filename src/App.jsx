@@ -22,14 +22,15 @@ function FirstChildren() {
       Scrollbar.init(scrollbar);
     }
   }, []);
-  return (
-    <div ref={ref} id="my-scrollbar" style={{ height: "100vh" }}>
-      <div
+  return <div ref={ref} id="my-scrollbar" style={{ height: "100vh" }}></div>;
+}
+
+/* <div
         onMouseEnter={projectEnter}
         onMouseLeave={projectLeave}
         style={{
           width: "100px",
-          height: "200vh",
+          height: "400vh",
           background: "#eee",
           border: "2px dashed black",
         }}
@@ -38,6 +39,7 @@ function FirstChildren() {
         onMouseEnter={contactEnter}
         onMouseLeave={contactLeave}
         style={{
+          width: "50vw",
           left: "300px",
           position: "relative",
           bottom: "50px",
@@ -46,6 +48,5 @@ function FirstChildren() {
       >
         elvinndichia@gmail.com
       </div>
-    </div>
-  );
-}
+
+      */
