@@ -2,6 +2,8 @@ import { CursorContext, CursorProvider } from "./helpers/CursorContext";
 import Scrollbar from "smooth-scrollbar";
 
 import React, { useEffect } from "react";
+import { EntryAnimation } from "./components/EntryAnimation";
+import Menu from "./components/Menu";
 
 export default function App() {
   return (
@@ -22,7 +24,12 @@ function FirstChildren() {
       Scrollbar.init(scrollbar);
     }
   }, []);
-  return <div ref={ref} id="my-scrollbar" style={{ height: "100vh" }}></div>;
+  return (
+    <div ref={ref} id="my-scrollbar" style={{ height: "100%", width: "100%" }}>
+      <EntryAnimation />
+      <Menu />
+    </div>
+  );
 }
 
 /* <div
