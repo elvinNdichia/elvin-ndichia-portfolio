@@ -13,34 +13,6 @@ body,
   max-width: 1100px;
   height: 100vh;
 }
-.lines-container :nth-child(1) {
-  display: none;
-}
-.lines-container :nth-child(2) {
-  display: none;
-}
-.lines-container :nth-child(3) {
-  display: none;
-}
-.lines-container :nth-child(4) {
-  display: none;
-}
-.lines-container :nth-child(5) {
-  display: none;
-}
-.lines-container :nth-child(6) {
-  display: none;
-}
-.lines-container :nth-child(7) {
-  display: none;
-}
-.lines-container :nth-child(8) {
-  display: none;
-}
-
-.container :nth-child(1) {
-  /* CSS styles for the first child go here */
-}
 
 @media screen and (min-width: 601px) {
   .lines-container {

@@ -1,7 +1,17 @@
-import { Box } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 
 export function EntryAnimation() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
+  const isLaptop = useMediaQuery(theme.breakpoints.up("md"));
+
+  let numLines;
+  if (isMobile) numLines = 5;
+  else if (isTablet) numLines = 9;
+  else if (isLaptop) numLines = 13;
+
   const lineContainerVariants = {
     visible: {
       opacity: 1,
@@ -17,10 +27,12 @@ export function EntryAnimation() {
       opacity: 0,
     },
   };
+
   const lineVariants = {
     visible: { height: "100%", transition: { duration: 0.5 } },
     hidden: { height: "2px", transition: { duration: 6 } },
   };
+
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }}>
       <motion.div
@@ -33,7 +45,7 @@ export function EntryAnimation() {
         animate="visible"
         variants={lineContainerVariants}
       >
-        {Array.from(Array(13)).map((_, index) => (
+        {Array.from(Array(numLines)).map((_, index) => (
           <motion.div
             key={index}
             className="line background-line"
