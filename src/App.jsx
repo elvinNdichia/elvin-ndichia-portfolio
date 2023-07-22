@@ -2,14 +2,20 @@ import { CursorContext, CursorProvider } from "./helpers/CursorContext";
 import Scrollbar from "smooth-scrollbar";
 
 import React, { useEffect } from "react";
-import { EntryAnimation } from "./components/EntryAnimation";
+import { Lines } from "./components/Lines";
 import Menu from "./components/Menu";
+import { Header } from "./components/Header";
+import { FluidHeader } from "./components/FluidHeader";
 
 export default function App() {
   return (
-    <CursorProvider>
-      <FirstChildren />
-    </CursorProvider>
+    <>
+      <Lines />
+      <FluidHeader />
+      <CursorProvider>
+        <FirstChildren />
+      </CursorProvider>
+    </>
   );
 }
 
@@ -26,8 +32,7 @@ function FirstChildren() {
   }, []);
   return (
     <div ref={ref} id="my-scrollbar" style={{ height: "100%", width: "100%" }}>
-      <EntryAnimation />
-      <Menu />
+      <></>
     </div>
   );
 }
@@ -53,7 +58,8 @@ function FirstChildren() {
           cursor: "pointer",
         }}
       >
-        elvinndichia@gmail.com
+        elvinndichia@gmail.com      >
+
       </div>
 
       */
