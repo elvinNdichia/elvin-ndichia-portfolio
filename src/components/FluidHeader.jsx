@@ -6,7 +6,8 @@ export function FluidHeader() {
     <Box
       sx={{
         position: "fixed",
-        top: "1rem",
+        top: { xs: "initial", sm: "1rem" },
+        bottom: { xs: "1rem", sm: "initial" },
         width: "100%",
         left: 0,
         display: "flex",

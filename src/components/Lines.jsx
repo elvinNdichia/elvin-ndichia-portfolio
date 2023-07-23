@@ -65,8 +65,8 @@ export function Lines() {
           style={{
             width: "100%",
             height: "1px",
-            top: isMobile ? "" : "3.75rem",
-            bottom: isMobile ? "3.75rem" : "",
+            top: isMobile ? "" : "4.2rem",
+            bottom: isMobile ? "4.2rem" : "",
             position: "absolute",
             right: 0,
           }}
