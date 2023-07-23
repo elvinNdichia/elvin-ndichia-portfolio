@@ -42,13 +42,16 @@ export function Lines() {
           left: 0,
           right: 0,
           width: "100%",
+          background: "rgba(255, 255, 255, 0.01)",
+          backdropFilter: "blur(100px)",
+          height: "100%",
         }}
       >
         <motion.div
           style={{
             width: "100%",
             height: "1px",
-            background: "#ccc",
+
             top: isMobile ? "" : "1rem",
             bottom: isMobile ? "1rem" : "",
             position: "absolute",
@@ -56,12 +59,12 @@ export function Lines() {
           initial={{ width: 0 }}
           animate={{ width: "100%" }}
           transition={{ delay: 1.1, type: "spring", bounce: 0, duration: 0.7 }}
+          className="line-color-top"
         />
         <motion.div
           style={{
             width: "100%",
             height: "1px",
-            background: "#bbb",
             top: isMobile ? "" : "3.75rem",
             bottom: isMobile ? "3.75rem" : "",
             position: "absolute",
@@ -70,6 +73,7 @@ export function Lines() {
           initial={{ width: 0 }}
           animate={{ width: "100%" }}
           transition={{ delay: 1.1, type: "spring", bounce: 0, duration: 0.7 }}
+          className="line-color-top"
         />
       </Box>
       <Box
@@ -94,8 +98,8 @@ export function Lines() {
           {Array.from(Array(numLines)).map((_, index) => (
             <motion.div
               key={index}
-              className="line background-line"
-              style={{ background: "#ddd", width: "1px", height: "100%" }}
+              className="line background-line line-color"
+              style={{ width: "1px", height: "100%" }}
               variants={lineVariants}
             />
           ))}

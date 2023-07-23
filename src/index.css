@@ -34,3 +34,12 @@ body,
   line-height: 24px; /* 150% */
   letter-spacing: 0.5px;
 }
+
+/* Colors */
+
+.line-color {
+  background-color: rgba(3, 30, 4, 0.065);
+}
+.line-color-top {
+  background-color: rgba(3, 30, 4, 0.2);
+}

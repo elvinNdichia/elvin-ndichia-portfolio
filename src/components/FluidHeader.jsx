@@ -1,5 +1,5 @@
 import { Box } from "@mui/system";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 export function FluidHeader() {
   return (
@@ -28,18 +28,33 @@ export function FluidHeader() {
             top: 0,
             width: "100%",
             height: "100%",
-            display: "grid",
+            display: "flex",
             gridTemplateColumns: "83fr 103fr 102fr",
             padding: ".5rem",
+            zIndex: 1,
           }}
         >
-          <div></div>
-          <motion.div
-            style={{
-              background: "#fff",
-              borderRadius: "40px",
-            }}
-          ></motion.div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              id="selected"
+              style={{
+                background: "#fff",
+                borderRadius: "40px",
+                height: "36px",
+                width: "30%",
+                // gridColumn: "2 / span 1",
+                position: "relative",
+              }}
+              initial={{}}
+              animate={
+                {
+                  //gridColumn: ["1 / span 1", "2 / span 1"]
+                  // left: ["20px", "40px"],
+                }
+              }
+              layout
+            ></motion.div>
+          </AnimatePresence>
           <div></div>
         </Box>
         <Box
@@ -48,6 +63,7 @@ export function FluidHeader() {
             "& > div": {
               padding: "6px 16px",
               borderRadius: "40px",
+              zIndex: 2,
             },
           }}
         >
@@ -58,10 +74,14 @@ export function FluidHeader() {
               //background: "#fff"
             }}
           >
-            Home
+            <p className="notranslate">Home</p>
           </Box>
-          <Box className="subtitle1">Projects</Box>
-          <Box className="subtitle1">Contact</Box>
+          <Box className="subtitle1">
+            <p className="notranslate">Projects</p>
+          </Box>
+          <Box className="subtitle1">
+            <p className="notranslate">Contact</p>
+          </Box>
         </Box>
       </Box>
     </Box>

@@ -6,10 +6,12 @@ import { Lines } from "./components/Lines";
 import Menu from "./components/Menu";
 import { Header } from "./components/Header";
 import { FluidHeader } from "./components/FluidHeader";
+import { AnimatingBackground } from "./components/AnimatingBackground";
 
 export default function App() {
   return (
     <>
+      <AnimatingBackground />
       <Lines />
       <FluidHeader />
       <CursorProvider>
