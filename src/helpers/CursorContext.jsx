@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useMouse from "@react-hook/mouse-position";
 import { motion, useTransform } from "framer-motion";
+import { Box } from "@mui/system";
 
 const CursorContext = React.createContext();
 
@@ -102,43 +103,45 @@ export function CursorProvider({ children }) {
         cursorVariant,
       }}
     >
-      <motion.div
-        variants={cursorVariants}
-        className="circle"
-        animate={cursorVariant}
-        transition={cursorSpring}
-        style={{
-          position: "fixed",
-          zIndex: 100,
-          display: "flex",
-          flexFlow: "row",
-          alignContent: "center",
-          justifyContent: "center",
-          top: 0,
-          left: 0,
-          height: "10px",
-          width: "10px",
-          backgroundColor: "#1e91d6",
-          borderRadius: "200px",
-          pointerEvents: "none",
-          color: "#fff",
-          textAlign: "center",
-          fontSize: "16px",
-        }}
-      >
-        <span
-          className="cursorText"
+      <Box ref={ref} id="my-scrollbar">
+        {children}
+        <motion.div
+          variants={cursorVariants}
+          className="circle"
+          animate={cursorVariant}
+          transition={cursorSpring}
           style={{
-            flex: "auto",
-            fontSize: "inherit",
+            position: "fixed",
+            zIndex: 1000,
+            display: "flex",
+            flexFlow: "row",
+            alignContent: "center",
+            justifyContent: "center",
+            top: 0,
+            left: 0,
+            height: "10px",
+            width: "10px",
+            backgroundColor: "#1e91d6",
+            borderRadius: "200px",
             pointerEvents: "none",
-            margin: "auto",
+            color: "#fff",
+            textAlign: "center",
+            fontSize: "16px",
           }}
         >
-          {cursorText}
-        </span>
-      </motion.div>
-      {children}
+          <span
+            className="cursorText"
+            style={{
+              flex: "auto",
+              fontSize: "inherit",
+              pointerEvents: "none",
+              margin: "auto",
+            }}
+          >
+            {cursorText}
+          </span>
+        </motion.div>
+      </Box>
     </CursorContext.Provider>
   );
 }

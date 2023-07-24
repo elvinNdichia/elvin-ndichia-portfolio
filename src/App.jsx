@@ -11,11 +11,11 @@ import { AnimatingBackground } from "./components/AnimatingBackground";
 export default function App() {
   return (
     <>
-      <AnimatingBackground />
-      <Lines />
-      <FluidHeader />
       <CursorProvider>
+        <AnimatingBackground />
+        <Lines />
         <FirstChildren />
+        <FluidHeader />
       </CursorProvider>
     </>
   );
@@ -33,9 +33,15 @@ function FirstChildren() {
     }
   }, []);
   return (
-    <div ref={ref} id="my-scrollbar" style={{ height: "100%", width: "100%" }}>
-      <>Routing</>
-    </div>
+    <>
+      <div
+        ref={ref}
+        id="my-scrollbar"
+        style={{ height: "100vh", width: "100%" }}
+      >
+        <div>Hello world</div>
+      </div>
+    </>
   );
 }
 

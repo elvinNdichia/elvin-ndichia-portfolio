@@ -1,7 +1,11 @@
 import { Box } from "@mui/system";
 import { AnimatePresence, motion } from "framer-motion";
+import { CursorContext } from "../helpers/CursorContext";
+import React from "react";
 
 export function FluidHeader() {
+  const { projectEnter, projectLeave } = React.useContext(CursorContext);
+
   return (
     <Box
       sx={{
@@ -74,6 +78,8 @@ export function FluidHeader() {
               color: "#1A73E8",
               //background: "#fff"
             }}
+            // onMouseEnter={projectEnter}
+            //onMouseLeave={projectLeave}
           >
             <p className="notranslate">Home</p>
           </Box>
