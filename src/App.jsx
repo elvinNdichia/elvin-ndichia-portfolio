@@ -7,9 +7,12 @@ import Menu from "./components/Menu";
 import { Header } from "./components/Header";
 import { FluidHeader } from "./components/FluidHeader";
 import { AnimatingBackground } from "./components/AnimatingBackground";
+import { NewPF } from "./components/NewPF";
 
 export default function App() {
-  return (
+  return <NewPF />;
+}
+/* 
     <>
       <CursorProvider>
         <AnimatingBackground />
@@ -17,9 +20,7 @@ export default function App() {
         <FirstChildren />
         <FluidHeader />
       </CursorProvider>
-    </>
-  );
-}
+    </>*/
 
 function FirstChildren() {
   const { ref, projectEnter, projectLeave, contactEnter, contactLeave } =
