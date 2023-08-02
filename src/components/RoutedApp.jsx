@@ -1,5 +1,6 @@
 import { createRef } from "react";
 import { createRoot } from "react-dom/client";
+import { motion } from "framer-motion";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -80,11 +81,41 @@ export function App() {
 }
 
 function Home() {
-  return "Home";
+  return (
+    <>
+      <motion.h1
+        style={{ position: "relative" }}
+        initial={{ top: 16 }}
+        animate={{ top: 0 }}
+      >
+        Home
+      </motion.h1>
+    </>
+  );
 }
 function About() {
-  return "About";
+  return (
+    <>
+      <motion.h1
+        style={{ position: "relative" }}
+        initial={{ top: 16 }}
+        animate={{ top: 0 }}
+      >
+        About
+      </motion.h1>
+    </>
+  );
 }
 function Contact() {
-  return "contact";
+  return (
+    <>
+      <motion.h1
+        style={{ position: "relative" }}
+        initial={{ top: 16 }}
+        animate={{ top: 0 }}
+      >
+        Contact
+      </motion.h1>
+    </>
+  );
 }
