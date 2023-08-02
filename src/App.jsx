@@ -8,9 +8,10 @@ import { Header } from "./components/Header";
 import { FluidHeader } from "./components/FluidHeader";
 import { AnimatingBackground } from "./components/AnimatingBackground";
 import { NewPF } from "./components/NewPF";
+import { RoutedApp } from "./components/RoutedApp";
 
 export default function App() {
-  return <NewPF />;
+  return <RoutedApp />;
 }
 /* 
     <>

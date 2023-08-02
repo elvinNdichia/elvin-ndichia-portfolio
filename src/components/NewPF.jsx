@@ -1,9 +1,10 @@
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import useMouse from "@react-hook/mouse-position";
-import { motion, useTransform } from "framer-motion";
+import { motion, useTransform, useScroll } from "framer-motion";
 import { Box } from "@mui/system";
 import { FrontEndAndUX } from "./frontEndAndUX";
+import { Lines } from "./Lines";
 
 export function NewPF() {
   /* ---------------------------------Lenis Start ------------------------------ */
@@ -12,7 +13,23 @@ export function NewPF() {
   });
   /* ---------------------------------Lenis End ------------------------------ */
 
-  /* ---------------------------------Lenis End ------------------------------ */
+  /* --------------------------------- Parallax Start ------------------------------ */
+  const parallaxRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: parallaxRef,
+    offset: ["start end", "end start"],
+  });
+
+  const scrollYProgressTimes200 = useTransform(
+    scrollYProgress,
+    (latest) => latest * 200
+  );
+  const scrollYProgressTimesMinus200 = useTransform(
+    scrollYProgress,
+    (latest) => latest * -200
+  );
+  /* --------------------------------- Parallax End ------------------------------ */
 
   const [cursorText, setCursorText] = useState("");
   const [cursorVariant, setCursorVariant] = useState("default");
@@ -116,7 +133,8 @@ export function NewPF() {
   return (
     <ReactLenis root>
       <canvas id="tvnoise"></canvas>
-      <Box ref={ref} sx={{ height: "200rem" }}>
+
+      <Box ref={ref}>
         <motion.div
           variants={variants}
           className="circle"
@@ -138,23 +156,33 @@ export function NewPF() {
             alignItems: "flex-end",
             padding: "1rem 32px",
           }}
+          ref={parallaxRef}
         >
-          <Box
-            component="motion.div"
-            sx={{
+          <motion.div
+            style={{
               position: "absolute",
               top: "50%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-              zIndex: 1,
             }}
           >
-            <Box
-              component="img"
-              src="./profile.png"
-              style={{ height: "70vh" }}
-            />
-          </Box>
+            <motion.div
+              style={{
+                position: "relative",
+                top: scrollYProgressTimes200,
+                zIndex: 20,
+              }}
+            >
+              <Box
+                component="img"
+                src="./profile.png"
+                style={{
+                  height: "70vh",
+                  position: "relative",
+                }}
+              />
+            </motion.div>
+          </motion.div>
 
           <Box
             component="p"
@@ -164,6 +192,8 @@ export function NewPF() {
               textAlign: "justify",
               marginRight: "1rem",
             }}
+            onMouseEnter={projectEnter}
+            onMouseLeave={projectLeave}
           >
             Hi, I am Elvin. I turn complex designs into clean, user-friendly
             interfaces. I’m quick but I don’t let a single detail slip thanks to
@@ -177,7 +207,6 @@ export function NewPF() {
             fill="none"
             style={{
               position: "relative",
-              mixBlendMode: "difference",
             }}
           >
             <FrontEndAndUX />
@@ -223,6 +252,47 @@ export function NewPF() {
             </div>
             <p className="body1">LinkedIn</p>
             <p className="body1">X || Twitter</p>
+          </Box>
+        </Box>
+        <Box>
+          <Box sx={{ height: "100vh" }}></Box>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              padding: "1rem 32px",
+            }}
+          >
+            <Box
+              sx={{ height: "600px", background: "#aaa" }}
+              onMouseEnter={projectEnter}
+              onMouseLeave={projectLeave}
+            ></Box>
+            <Box
+              sx={{ height: "600px", background: "#ccc", marginTop: "100px" }}
+              onMouseEnter={projectEnter}
+              onMouseLeave={projectLeave}
+            ></Box>
+          </Box>
+        </Box>
+        <Box sx={{ marginTop: "80px" }}>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              padding: "1rem 32px",
+            }}
+          >
+            <Box
+              sx={{ height: "600px", background: "#aaa" }}
+              onMouseEnter={projectEnter}
+              onMouseLeave={projectLeave}
+            ></Box>
+            <Box
+              sx={{ height: "600px", background: "#ccc", marginTop: "100px" }}
+              onMouseEnter={projectEnter}
+              onMouseLeave={projectLeave}
+            ></Box>
           </Box>
         </Box>
       </Box>
