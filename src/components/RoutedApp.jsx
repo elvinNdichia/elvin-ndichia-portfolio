@@ -183,6 +183,75 @@ function Chip({ svg, label }) {
   );
 }
 
+/* -------------------- Logo animation start ---------------------------- */
+
+const pathVariants = {
+  hidden: { opacity: 0, x: 32 },
+  visible: (custom) => ({
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: custom * 0.1,
+      duration: 0.5,
+    },
+  }),
+};
+
+const Logo = () => {
+  return (
+    <motion.svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="89"
+      height="28"
+      viewBox="0 0 89 28"
+      fill="none"
+    >
+      <motion.path
+        d="M0 27.9999V0.329346H13.8353V4.28229H3.95294V12.1882H11.5294V16.1411H3.95294V23.7176H13.5059V27.9999H0Z"
+        fill="black"
+        variants={pathVariants}
+        initial="hidden"
+        animate="visible"
+        custom={0}
+      />
+      <motion.path
+        d="M17.7891 27.9999V0.329346H21.742V23.7176H31.6244V27.9999H17.7891Z"
+        fill="black"
+        variants={pathVariants}
+        initial="hidden"
+        animate="visible"
+        custom={1}
+      />
+      <motion.path
+        d="M35.5781 27.9999V0.329346H39.5311V21.4117L52.0487 0.329346H56.6605L40.5193 27.9999H35.5781Z"
+        fill="black"
+        variants={pathVariants}
+        initial="hidden"
+        animate="visible"
+        custom={2}
+      />
+      <motion.path
+        d="M59.293 27.9999V0.329346H63.2459V27.9999H59.293Z"
+        fill="black"
+        variants={pathVariants}
+        initial="hidden"
+        animate="visible"
+        custom={3}
+      />
+      <motion.path
+        d="M67.8594 27.6706V0H72.1417L84.33 20.4235V0H88.2829V27.6706H84.0006L71.8123 7.24706V27.6706H67.8594Z"
+        fill="black"
+        variants={pathVariants}
+        initial="hidden"
+        animate="visible"
+        custom={4}
+      />
+    </motion.svg>
+  );
+};
+
+/* -------------------- Logo animation end ---------------------------- */
+
 function NavigateButton({ location }) {
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }}>
@@ -275,6 +344,8 @@ function Home() {
         detail slip thanks to my background in UX design and deep knowledge on
         Frontend technologies, particularly React ecosystem
       </motion.h1>
+      <Logo />
+      <br />
       <NavigateButton location="Projects" />
       <br />
       <Chip svg={htmlSVG} label="HTML" />
