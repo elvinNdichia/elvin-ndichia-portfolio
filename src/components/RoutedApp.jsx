@@ -10,6 +10,17 @@ import {
   useOutlet,
 } from "react-router-dom";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
+import {
+  htmlSVG,
+  cssSVG,
+  javascriptSVG,
+  reactSVG,
+  muiSVG,
+  reactRouterSVG,
+  framerSVG,
+  firebaseSVG,
+  figmaSVG,
+} from "./svgLogos";
 
 const Box = motion(MuiBox);
 
@@ -132,7 +143,7 @@ export function App() {
           <CSSTransition
             key={location.pathname}
             nodeRef={nodeRef}
-            timeout={400}
+            timeout={800}
             classNames="page"
             unmountOnExit
           >
@@ -145,6 +156,30 @@ export function App() {
         </SwitchTransition>
       </div>
     </>
+  );
+}
+
+function Chip({ svg, label }) {
+  return (
+    <div
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        padding: "11px 16px",
+        background: "#eee",
+        borderRadius: "50px",
+        marginRight: "8px",
+      }}
+    >
+      <div
+        style={{ marginRight: "10px", display: "flex", alignItems: "center" }}
+      >
+        {svg}
+      </div>
+      <p style={{ color: "rgba(0, 0, 0, 60)" }} className="body1">
+        {label}
+      </p>
+    </div>
   );
 }
 
@@ -168,6 +203,15 @@ function Home() {
         detail slip thanks to my background in UX design and deep knowledge on
         Frontend technologies, particularly React ecosystem
       </motion.h1>
+      <Chip svg={htmlSVG} label="HTML" />
+      <Chip svg={cssSVG} label="CSS" />
+      <Chip svg={javascriptSVG} label="JavaScript" />
+      <Chip svg={reactSVG} label="React" />
+      <Chip svg={muiSVG} label="MUI" />
+      <Chip svg={reactRouterSVG} label="React Router" />
+      <Chip svg={framerSVG} label="Framer Motion" />
+      <Chip svg={firebaseSVG} label="Firebase" />
+      <Chip svg={figmaSVG} label="Figma" />
     </>
   );
 }
