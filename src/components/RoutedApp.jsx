@@ -1,6 +1,7 @@
 import { createRef } from "react";
 import { createRoot } from "react-dom/client";
 import { motion } from "framer-motion";
+import { Box as MuiBox } from "@mui/system";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -10,9 +11,16 @@ import {
 } from "react-router-dom";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 
+const Box = motion(MuiBox);
+
 const routes = [
   { path: "/", name: "Home", element: <Home />, nodeRef: createRef() },
-  { path: "/about", name: "About", element: <About />, nodeRef: createRef() },
+  {
+    path: "/projects",
+    name: "Projects",
+    element: <Projects />,
+    nodeRef: createRef(),
+  },
   {
     path: "/contact",
     name: "Contact",
@@ -42,29 +50,89 @@ export function App() {
   const currentOutlet = useOutlet();
   const { nodeRef } =
     routes.find((route) => route.path === location.pathname) ?? {};
+
+  const navAnimation = {
+    Home: { left: "3px" },
+    Projects: { left: "133px" },
+    Contact: { left: "266px" },
+  };
+  const currentRoute = routes.find(
+    (route) => route.path === location.pathname
+  )?.name;
+
   return (
     <>
-      <header>
-        <nav className="mx-auto">
-          {routes.map((route) => (
-            <NavLink
-              key={route.path}
-              as={NavLink}
-              to={route.path}
-              className={({ isActive }) => (isActive ? "active" : undefined)}
-              end
-            >
-              {route.name}
-            </NavLink>
-          ))}
-        </nav>
+      <header
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <Box
+          style={{
+            position: "relative",
+            width: "400px",
+            background: "#000",
+            color: "#fff",
+            borderRadius: "50px",
+            padding: "3px",
+          }}
+        >
+          <Box
+            layout
+            animate={navAnimation[currentRoute]}
+            initial={navAnimation[currentRoute]}
+            transition={{ type: "spring", bounce: 0.2, duration: 0.7 }}
+            sx={{
+              width: "130px",
+              height: "36px",
+              background: "#fff",
+              borderRadius: "50px",
+              position: "absolute",
+              zIndex: 1,
+            }}
+          />
+
+          <Box
+            sx={{
+              position: "relative",
+              zIndex: 2,
+              display: "flex",
+              color: "#fff",
+              " .smooth-nav-container": {
+                width: "130px",
+                height: "36px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              },
+              " p": { textDecoration: "none" },
+            }}
+          >
+            {routes.map((route) => (
+              <NavLink
+                key={route.path}
+                as={NavLink}
+                to={route.path}
+                style={{ textDecoration: "none" }}
+                className={({ isActive }) =>
+                  isActive ? "smooth-nav-active" : "smooth-nav-link"
+                }
+              >
+                <div className="smooth-nav-container body1">
+                  <p>{route.name}</p>
+                </div>
+              </NavLink>
+            ))}
+          </Box>
+        </Box>
       </header>
       <div className="container">
         <SwitchTransition>
           <CSSTransition
             key={location.pathname}
             nodeRef={nodeRef}
-            timeout={300}
+            timeout={400}
             classNames="page"
             unmountOnExit
           >
@@ -93,7 +161,7 @@ function Home() {
     </>
   );
 }
-function About() {
+function Projects() {
   return (
     <>
       <motion.h1
@@ -101,7 +169,7 @@ function About() {
         initial={{ top: 16 }}
         animate={{ top: 0 }}
       >
-        About
+        Projects
       </motion.h1>
     </>
   );

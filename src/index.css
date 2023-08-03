@@ -64,7 +64,7 @@ body {
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 14px; /* 150% */
+  line-height: 24px; /* 150% */
   letter-spacing: 0.5px;
 }
 .body2 {
@@ -146,3 +146,14 @@ canvas {
   transition: opacity 300ms, transform 300ms;
 }
 /* ---------------------------------Rout transition End ------------------------------ */
+
+/* --------------------------------- Smooth Nav Start ------------------------------ */
+
+.smooth-nav-link {
+  color: #fff;
+}
+.smooth-nav-active {
+  color: #000;
+}
+
+/* --------------------------------- Smooth Nav End ------------------------------ */
