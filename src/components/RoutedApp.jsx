@@ -148,15 +148,25 @@ export function App() {
   );
 }
 
+const textLineVariants = {
+  visible: { top: 0, transition: { duration: 0.5 } },
+  hidden: { top: 16, transition: { duration: 6 } },
+};
 function Home() {
   return (
     <>
       <motion.h1
         style={{ position: "relative" }}
-        initial={{ top: 16 }}
-        animate={{ top: 0 }}
+        initial={{ top: 16, opacity: 0 }}
+        animate={{ top: 0, opacity: 1 }}
+        className="h1"
+        transition={{ delay: 0.2 }}
+        variants={{ textLineVariants }}
       >
-        Home
+        Hi, I am Elvin. A Frontend developer who turns complex designs into
+        clean, user-friendly interfaces. I’m quick but I don’t let a single
+        detail slip thanks to my background in UX design and deep knowledge on
+        Frontend technologies, particularly React ecosystem
       </motion.h1>
     </>
   );
@@ -166,10 +176,15 @@ function Projects() {
     <>
       <motion.h1
         style={{ position: "relative" }}
-        initial={{ top: 16 }}
-        animate={{ top: 0 }}
+        initial={{ top: 16, opacity: 0 }}
+        animate={{ top: 0, opacity: 1 }}
+        className="h1"
+        transition={{ delay: 0.1 }}
       >
-        Projects
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit eum
+        illum ea perspiciatis est magni et totam iure nobis reprehenderit
+        nostrum fugit enim vitae voluptates tempora eaque, molestiae mollitia
+        consequuntur.
       </motion.h1>
     </>
   );
@@ -182,8 +197,53 @@ function Contact() {
         initial={{ top: 16 }}
         animate={{ top: 0 }}
       >
-        Contact
+        <AnimatedLines />
       </motion.h1>
     </>
   );
 }
+
+const sentenceVariants = {
+  hidden: { opacity: 0, y: "100%" },
+  visible: {
+    opacity: 1,
+    y: "0%",
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const lineVariants = {
+  hidden: { opacity: 0, y: "100%" },
+  visible: {
+    opacity: 1,
+    y: "0%",
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
+const AnimatedLines = () => {
+  return (
+    <motion.div variants={sentenceVariants} initial="hidden" animate="visible">
+      <div style={{ overflow: "hidden" }}>
+        <motion.h1 variants={lineVariants} className="h1">
+          Hello there
+        </motion.h1>
+      </div>
+      <div style={{ overflow: "hidden" }}>
+        <motion.h1 variants={lineVariants} className="h1">
+          and welcome to my site.
+        </motion.h1>
+      </div>
+      <div style={{ overflow: "hidden" }}>
+        <motion.h1 variants={lineVariants} className="h1">
+          I am called Elvin
+        </motion.h1>
+      </div>
+    </motion.div>
+  );
+};
