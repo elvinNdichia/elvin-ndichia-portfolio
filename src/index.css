@@ -89,8 +89,14 @@ body {
 .line-color {
   background-color: rgba(3, 30, 4, 0.065);
 }
-.line-color-top {
-  background-color: rgba(3, 30, 4, 0.2);
+.navigate-button::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -4px;
+  width: calc(100% + 8px);
+  height: 2px;
+  background: linear-gradient(45deg, #fe6b8b 30%, #ff8e53 90%);
 }
 /* ---------------------------------Cursor Start ------------------------------ */
 .circle {
