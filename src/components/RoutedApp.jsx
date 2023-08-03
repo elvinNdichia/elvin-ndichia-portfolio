@@ -174,31 +174,14 @@ function Home() {
 function Projects() {
   return (
     <>
-      <motion.h1
-        style={{ position: "relative" }}
-        initial={{ top: 16, opacity: 0 }}
-        animate={{ top: 0, opacity: 1 }}
-        className="h1"
-        transition={{ delay: 0.1 }}
-      >
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit eum
-        illum ea perspiciatis est magni et totam iure nobis reprehenderit
-        nostrum fugit enim vitae voluptates tempora eaque, molestiae mollitia
-        consequuntur.
-      </motion.h1>
+      <AnimatedLines />
     </>
   );
 }
 function Contact() {
   return (
     <>
-      <motion.h1
-        style={{ position: "relative" }}
-        initial={{ top: 16 }}
-        animate={{ top: 0 }}
-      >
-        <AnimatedLines />
-      </motion.h1>
+      <AnimatedLines />
     </>
   );
 }
@@ -210,7 +193,7 @@ const sentenceVariants = {
     y: "0%",
     transition: {
       delayChildren: 0.3,
-      staggerChildren: 0.2,
+      staggerChildren: 0.08,
     },
   },
 };
@@ -231,17 +214,47 @@ const AnimatedLines = () => {
     <motion.div variants={sentenceVariants} initial="hidden" animate="visible">
       <div style={{ overflow: "hidden" }}>
         <motion.h1 variants={lineVariants} className="h1">
-          Hello there
+          Hi, I am Elvin. A Frontend
         </motion.h1>
       </div>
       <div style={{ overflow: "hidden" }}>
         <motion.h1 variants={lineVariants} className="h1">
-          and welcome to my site.
+          developer who turns complex
         </motion.h1>
       </div>
       <div style={{ overflow: "hidden" }}>
         <motion.h1 variants={lineVariants} className="h1">
-          I am called Elvin
+          designs into clean, user-friendly
+        </motion.h1>
+      </div>
+      <div style={{ overflow: "hidden" }}>
+        <motion.h1 variants={lineVariants} className="h1">
+          interfaces. I’m quick but I don’t
+        </motion.h1>
+      </div>
+      <div style={{ overflow: "hidden" }}>
+        <motion.h1 variants={lineVariants} className="h1">
+          let a single detail slip thanks to
+        </motion.h1>
+      </div>
+      <div style={{ overflow: "hidden" }}>
+        <motion.h1 variants={lineVariants} className="h1">
+          my background in UX design and
+        </motion.h1>
+      </div>
+      <div style={{ overflow: "hidden" }}>
+        <motion.h1 variants={lineVariants} className="h1">
+          deep knowledge on Frontend
+        </motion.h1>
+      </div>
+      <div style={{ overflow: "hidden" }}>
+        <motion.h1 variants={lineVariants} className="h1">
+          technologies, particularly React
+        </motion.h1>
+      </div>
+      <div style={{ overflow: "hidden" }}>
+        <motion.h1 variants={lineVariants} className="h1">
+          ecosystem
         </motion.h1>
       </div>
     </motion.div>
