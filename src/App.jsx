@@ -9,12 +9,14 @@ import { FluidHeader } from "./components/FluidHeader";
 import { AnimatingBackground } from "./components/AnimatingBackground";
 import { NewPF } from "./components/NewPF";
 import { RoutedApp } from "./components/RoutedApp";
+import { AppRouted } from "./components/AppRouted";
 
 export default function App() {
-  return <RoutedApp />;
+  return <AppRouted />;
 }
 /* 
     <>
+    <RoutedApp />
       <CursorProvider>
         <AnimatingBackground />
         <Lines />
