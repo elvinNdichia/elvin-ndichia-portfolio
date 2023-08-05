@@ -23,6 +23,7 @@ import {
 } from "./svgLogos";
 
 const Box = motion(MuiBox);
+const MotionBox = motion(Box);
 
 const routes = [
   { path: "/", name: "Home", element: <Home />, nodeRef: createRef() },
@@ -73,6 +74,7 @@ export function App() {
 
   return (
     <>
+      <LoaderView />
       <header
         style={{
           display: "flex",
@@ -182,75 +184,6 @@ function Chip({ svg, label }) {
     </div>
   );
 }
-
-/* -------------------- Logo animation start ---------------------------- */
-
-const pathVariants = {
-  hidden: { opacity: 0, x: 32 },
-  visible: (custom) => ({
-    opacity: 1,
-    x: 0,
-    transition: {
-      delay: custom * 0.1,
-      duration: 0.5,
-    },
-  }),
-};
-
-const Logo = () => {
-  return (
-    <motion.svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="89"
-      height="28"
-      viewBox="0 0 89 28"
-      fill="none"
-    >
-      <motion.path
-        d="M0 27.9999V0.329346H13.8353V4.28229H3.95294V12.1882H11.5294V16.1411H3.95294V23.7176H13.5059V27.9999H0Z"
-        fill="black"
-        variants={pathVariants}
-        initial="hidden"
-        animate="visible"
-        custom={0}
-      />
-      <motion.path
-        d="M17.7891 27.9999V0.329346H21.742V23.7176H31.6244V27.9999H17.7891Z"
-        fill="black"
-        variants={pathVariants}
-        initial="hidden"
-        animate="visible"
-        custom={1}
-      />
-      <motion.path
-        d="M35.5781 27.9999V0.329346H39.5311V21.4117L52.0487 0.329346H56.6605L40.5193 27.9999H35.5781Z"
-        fill="black"
-        variants={pathVariants}
-        initial="hidden"
-        animate="visible"
-        custom={2}
-      />
-      <motion.path
-        d="M59.293 27.9999V0.329346H63.2459V27.9999H59.293Z"
-        fill="black"
-        variants={pathVariants}
-        initial="hidden"
-        animate="visible"
-        custom={3}
-      />
-      <motion.path
-        d="M67.8594 27.6706V0H72.1417L84.33 20.4235V0H88.2829V27.6706H84.0006L71.8123 7.24706V27.6706H67.8594Z"
-        fill="black"
-        variants={pathVariants}
-        initial="hidden"
-        animate="visible"
-        custom={4}
-      />
-    </motion.svg>
-  );
-};
-
-/* -------------------- Logo animation end ---------------------------- */
 
 function NavigateButton({ location }) {
   return (
@@ -449,3 +382,211 @@ const AnimatedLines = () => {
     </motion.div>
   );
 };
+
+/* -------------------- Logo animation start ---------------------------- */
+
+function Logo() {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        "> div": {
+          marginRight: "3.9px",
+        },
+      }}
+    >
+      <Box position="relative" width={14} height={28} overflow="hidden">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="28"
+          viewBox="0 0 14 28"
+          fill="none"
+        >
+          <path
+            d="M0 27.6706V0H13.8353V3.95294H3.95294V11.8588H11.5294V15.8118H3.95294V23.3882H13.5059V27.6706H0Z"
+            fill="white"
+          />
+        </svg>
+        <Box
+          as={motion.div}
+          initial={{ x: 0 }}
+          animate={{ x: "100%" }}
+          transition={{
+            duration: 1,
+            ease: [0.6, 0.01, -0.05, 0.95],
+            times: [0, 1],
+            delay: 0.3,
+          }} // Added delay here
+          sx={{
+            backgroundColor: "#000",
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+            left: 0,
+            top: 0,
+          }}
+        />
+      </Box>
+      <Box position="relative" width={15} height={28} overflow="hidden">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="15"
+          height="28"
+          viewBox="0 0 15 28"
+          fill="white"
+        >
+          <path
+            d="M0.789062 27.6706V0H4.742V23.3882H14.6244V27.6706H0.789062Z"
+            fill="white"
+          />
+        </svg>
+        <Box
+          as={motion.div}
+          initial={{ x: 0 }}
+          animate={{ x: "100%" }}
+          transition={{
+            duration: 1,
+            ease: [0.6, 0.01, -0.05, 0.95],
+            times: [0, 1],
+            delay: 0.4,
+          }} // Added delay here
+          sx={{
+            backgroundColor: "#000",
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+            left: 0,
+            top: 0,
+          }}
+        />
+      </Box>
+      <Box position="relative" width={22} height={28} overflow="hidden">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="28"
+          viewBox="0 0 22 28"
+          fill="white"
+        >
+          <path
+            d="M0.578125 27.6706V0H4.53107V21.0824L17.0487 0H21.6605L5.5193 27.6706H0.578125Z"
+            fill="white"
+          />
+        </svg>
+        <Box
+          as={motion.div}
+          initial={{ x: 0 }}
+          animate={{ x: "100%" }}
+          transition={{
+            duration: 1,
+            ease: [0.6, 0.01, -0.05, 0.95],
+            times: [0, 1],
+            delay: 0.5,
+          }} // Added delay here
+          sx={{
+            backgroundColor: "#000",
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+            left: 0,
+            top: 0,
+          }}
+        />
+      </Box>
+      <Box position="relative" width={5} height={28} overflow="hidden">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="5"
+          height="28"
+          viewBox="0 0 5 28"
+          fill="white"
+        >
+          <path
+            d="M0.292969 27.6706V0H4.24591V27.6706H0.292969Z"
+            fill="white"
+          />
+        </svg>
+        <Box
+          as={motion.div}
+          initial={{ x: 0 }}
+          animate={{ x: "100%" }}
+          transition={{
+            duration: 1,
+            ease: [0.6, 0.01, -0.05, 0.95],
+            times: [0, 1],
+            delay: 0.48,
+          }} // Added delay here
+          sx={{
+            backgroundColor: "#000",
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+            left: 0,
+            top: 0,
+          }}
+        />
+      </Box>
+      <Box position="relative" width={22} height={28} overflow="hidden">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="28"
+          viewBox="0 0 22 28"
+          fill="white"
+        >
+          <path
+            d="M0.859375 27.6706V0H5.14173L17.33 20.4235V0H21.2829V27.6706H17.0006L4.81232 7.24706V27.6706H0.859375Z"
+            fill="white"
+          />
+        </svg>
+        <Box
+          as={motion.div}
+          initial={{ x: 0 }}
+          animate={{ x: "100%" }}
+          transition={{
+            duration: 1,
+            ease: [0.6, 0.01, -0.05, 0.95],
+            times: [0, 1],
+            delay: 0.52,
+          }} // Added delay here
+          sx={{
+            backgroundColor: "#000",
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+            left: 0,
+            top: 0,
+          }}
+        />
+      </Box>
+    </Box>
+  );
+}
+
+/* -------------------- Logo animation end ---------------------------- */
+/* -------------------- Loader Start ---------------------------- */
+export function LoaderView() {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#000",
+        width: "100vw",
+        height: "100vh",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        zIndex: 500,
+      }}
+      initial={{}}
+      animate={{}}
+    >
+      <Logo />
+    </Box>
+  );
+}
+/* -------------------- Loader End ---------------------------- */
