@@ -1,6 +1,6 @@
 import { createRef } from "react";
 import { createRoot } from "react-dom/client";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Box as MuiBox } from "@mui/system";
 import {
   createBrowserRouter,
@@ -21,6 +21,7 @@ import {
   firebaseSVG,
   figmaSVG,
 } from "./svgLogos";
+import React, { useEffect } from "react";
 
 const Box = motion(MuiBox);
 const MotionBox = motion(Box);
@@ -568,25 +569,79 @@ function Logo() {
 /* -------------------- Logo animation end ---------------------------- */
 /* -------------------- Loader Start ---------------------------- */
 export function LoaderView() {
+  const [isLoading, setLoading] = React.useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "#000",
-        width: "100vw",
-        height: "100vh",
-        position: "fixed",
-        top: 0,
-        left: 0,
-        zIndex: 500,
-      }}
-      initial={{}}
-      animate={{}}
-    >
-      <Logo />
-    </Box>
+    <AnimatePresence mode="wait">
+      {isLoading && (
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "#000",
+            width: "100vw",
+            height: "100vh",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            zIndex: 500,
+          }}
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <Box
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 0 }}
+            transition={{ delay: 4.5, duration: 0.4 }}
+            layout
+          >
+            <Box initial={{}}>
+              <Logo />
+            </Box>
+            <Box
+              sx={{
+                color: "rgba(255, 255, 255, .7)",
+                marginTop: "8px",
+                fontWeight: 400,
+                fontSize: 14,
+                textShadow: "0 0 3px #fff",
+              }}
+              className="body1"
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: [
+                  0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                  0, 0, 1, 0, 1, 0, 0, 1, 0, 1,
+                ],
+                textShadow: [
+                  "0 0 6px #fff",
+                  "0 0 2px #fff",
+                  "0 0 6px #fff",
+                  "0 0 2px #fff",
+                  "0 0 6px #fff",
+                ],
+              }}
+              transition={{
+                opacity: { delay: 1, duration: 1.3 },
+                textShadow: { duration: 5 },
+              }}
+            >
+              Let's make the world significantly better
+            </Box>
+          </Box>
+        </Box>
+      )}
+    </AnimatePresence>
   );
 }
 /* -------------------- Loader End ---------------------------- */
