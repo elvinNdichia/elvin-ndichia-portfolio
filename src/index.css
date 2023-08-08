@@ -87,7 +87,7 @@ body {
 /* Colors */
 
 .line-color {
-  background-color: rgba(3, 30, 4, 0.065);
+  background-color: rgba(3, 30, 4, 0.08);
 }
 .navigate-button::after {
   content: "";

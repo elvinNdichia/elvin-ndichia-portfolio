@@ -24,6 +24,7 @@ import {
 } from "./svgLogos";
 import React, { useEffect, useState } from "react";
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
+import { Lines } from "./Lines";
 
 const Box = motion(MuiBox);
 const MotionBox = motion(Box);
@@ -86,6 +87,7 @@ export function App() {
   return (
     <>
       <LoaderView />
+      <Lines />
       <ReactLenis root>
         {/* Header START */}
         <header
