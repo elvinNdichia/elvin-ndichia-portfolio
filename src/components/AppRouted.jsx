@@ -417,7 +417,6 @@ function Home() {
         border: "2px dashed red",
         height: "200vh",
         width: "100vw",
-        marginTop: "-40px",
       }}
       ref={ref}
     >
