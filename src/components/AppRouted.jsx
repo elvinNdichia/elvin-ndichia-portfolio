@@ -2,6 +2,7 @@ import { createRef } from "react";
 import { createRoot } from "react-dom/client";
 import { AnimatePresence, motion } from "framer-motion";
 import { Box as MuiBox } from "@mui/system";
+import useMouse from "@react-hook/mouse-position";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -21,7 +22,7 @@ import {
   firebaseSVG,
   figmaSVG,
 } from "./svgLogos";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 
 const Box = motion(MuiBox);
@@ -91,6 +92,7 @@ export function App() {
           style={{
             display: "flex",
             justifyContent: "center",
+            pointerEvents: "none",
           }}
         >
           <Box
@@ -177,8 +179,206 @@ export function App() {
 /* -------------------- App END ---------------------------- */
 
 /* -------------------- Home START ---------------------------- */
+
+const sentenceVariants = {
+  hidden: { opacity: 0, y: "100%" },
+  visible: {
+    opacity: 1,
+    y: "0%",
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const lineVariants = {
+  hidden: { opacity: 0, y: "100%" },
+  visible: {
+    opacity: 1,
+    y: "0%",
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
+const AnimatedLines = ({ projectLeave, projectEnter }) => {
+  return (
+    <motion.div variants={sentenceVariants} initial="hidden" animate="visible">
+      <div style={{ overflow: "hidden" }}>
+        <motion.h1 variants={lineVariants} className="h1">
+          Hi, I am Elvin. A Frontend
+        </motion.h1>
+      </div>
+      <div style={{ overflow: "hidden" }}>
+        <motion.h1 variants={lineVariants} className="h1">
+          developer who turns complex
+        </motion.h1>
+      </div>
+      <div style={{ overflow: "hidden" }}>
+        <motion.h1 variants={lineVariants} className="h1">
+          designs into clean, user-friendly
+        </motion.h1>
+      </div>
+      <div style={{ overflow: "hidden" }}>
+        <motion.h1 variants={lineVariants} className="h1">
+          interfaces. I’m{" "}
+          <a onMouseEnter={projectEnter} onMouseLeave={projectLeave}>
+            quick
+          </a>{" "}
+          but I don’t
+        </motion.h1>
+      </div>
+      <div style={{ overflow: "hidden" }}>
+        <motion.h1 variants={lineVariants} className="h1">
+          let a single detail slip thanks to
+        </motion.h1>
+      </div>
+      <div style={{ overflow: "hidden" }}>
+        <motion.h1 variants={lineVariants} className="h1">
+          my background in UX design and
+        </motion.h1>
+      </div>
+      <div style={{ overflow: "hidden" }}>
+        <motion.h1 variants={lineVariants} className="h1">
+          deep knowledge on Frontend
+        </motion.h1>
+      </div>
+      <div style={{ overflow: "hidden" }}>
+        <motion.h1 variants={lineVariants} className="h1">
+          technologies, particularly React
+        </motion.h1>
+      </div>
+      <div style={{ overflow: "hidden" }}>
+        <motion.h1 variants={lineVariants} className="h1">
+          ecosystem
+        </motion.h1>
+      </div>
+    </motion.div>
+  );
+};
 function Home() {
-  return <Box sx={{ border: "2px dashed red", height: "200vh" }}>Home</Box>;
+  const [cursorText, setCursorText] = useState("");
+  const [cursorVariant, setCursorVariant] = useState("default");
+
+  const ref = React.useRef(null);
+  const mouse = useMouse(ref, {
+    enterDelay: 100,
+    leaveDelay: 100,
+  });
+
+  let mouseXPosition = 0;
+  let mouseYPosition = 0;
+
+  if (mouse.x !== null) {
+    mouseXPosition = mouse.clientX;
+  }
+
+  if (mouse.y !== null) {
+    mouseYPosition = mouse.clientY;
+  }
+
+  const variants = {
+    default: {
+      opacity: 1,
+      height: 10,
+      width: 10,
+      fontSize: "16px",
+      backgroundColor: "#1e91d6",
+      x: mouseXPosition,
+      y: mouseYPosition,
+      transition: {
+        type: "spring",
+        mass: 0.6,
+      },
+    },
+    project: {
+      opacity: 1,
+      // backgroundColor: "rgba(255, 255, 255, 0.6)",
+      backgroundColor: "#1e91d6",
+      color: "#000",
+      height: 80,
+      width: 80,
+      fontSize: "18px",
+      x: mouseXPosition - 32,
+      y: mouseYPosition - 32,
+    },
+    contact: {
+      opacity: 1,
+      backgroundColor: "#fff",
+      color: "#000",
+      height: 64,
+      width: 64,
+      fontSize: "32px",
+      x: mouseXPosition - 48,
+      y: mouseYPosition - 48,
+    },
+  };
+
+  const spring = {
+    type: "spring",
+    stiffness: 500,
+    damping: 28,
+  };
+
+  function projectEnter(event) {
+    setCursorText("Copy");
+    setCursorVariant("project");
+  }
+
+  function projectLeave(event) {
+    setCursorText("");
+    setCursorVariant("default");
+  }
+
+  function contactEnter(event) {
+    setCursorText(
+      <>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+        >
+          <g fill="currentColor">
+            <path d="M14.5 14.5v-3.25a.5.5 0 0 1 1 0V15a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5h3.75a.5.5 0 0 1 0 1H5.5v9h9Z" />
+            <path d="M10.354 10.354a.5.5 0 0 1-.708-.708l5-5a.5.5 0 0 1 .708.708l-5 5Z" />
+            <path d="M15.5 8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 1 0v3.5Z" />
+            <path d="M11.5 5.5a.5.5 0 0 1 0-1H15a.5.5 0 0 1 0 1h-3.5Z" />
+          </g>
+        </svg>
+      </>
+    );
+    setCursorVariant("contact");
+  }
+
+  function contactLeave(event) {
+    setCursorText("");
+    setCursorVariant("default");
+  }
+
+  return (
+    <Box
+      sx={{
+        border: "2px dashed red",
+        height: "200vh",
+        width: "100vw",
+        marginTop: "-40px",
+      }}
+      ref={ref}
+    >
+      <motion.div
+        variants={variants}
+        className="circle"
+        animate={cursorVariant}
+        transition={spring}
+      >
+        <span className="cursorText">{cursorText}</span>
+      </motion.div>
+      <AnimatedLines projectEnter={projectEnter} projectLeave={projectLeave} />
+    </Box>
+  );
 }
 /* -------------------- Home END ---------------------------- */
 /* -------------------- Projects START ---------------------------- */
