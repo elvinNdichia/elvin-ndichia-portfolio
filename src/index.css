@@ -15,6 +15,7 @@ body,
 }
 body {
   overflow-y: scroll;
+  background-size: cover;
   /* 
  animatedBy animation was here
  background-image: url("bg.png");
@@ -40,8 +41,7 @@ body {
 }
 
 .lines-container {
-  width: calc(100% - 48px);
-  max-width: 1100px;
+  /* width: calc(100% - 48px); */
   height: 100vh;
 }
 

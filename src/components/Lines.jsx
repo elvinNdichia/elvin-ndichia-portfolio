@@ -8,9 +8,13 @@ export function Lines() {
   const isLaptop = useMediaQuery(theme.breakpoints.up("md"));
 
   let numLines;
-  if (isMobile) numLines = 5;
-  else if (isTablet) numLines = 9;
+  if (isMobile) numLines = 3;
+  else if (isTablet) numLines = 7;
   else if (isLaptop) numLines = 13;
+
+  let linesContainerPadding = "0 16px";
+  if (isTablet) linesContainerPadding = "0 32px";
+  if (isLaptop) linesContainerPadding = "0 64px";
 
   const lineContainerVariants = {
     visible: {
@@ -89,6 +93,8 @@ export function Lines() {
           style={{
             display: "flex",
             justifyContent: "space-between",
+            padding: linesContainerPadding,
+            width: "100%",
           }}
           className="lines-container"
           initial="hidden"

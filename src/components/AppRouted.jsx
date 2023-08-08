@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { AnimatePresence, motion } from "framer-motion";
 import { Box as MuiBox } from "@mui/system";
 import useMouse from "@react-hook/mouse-position";
+import { useMediaQuery, useTheme } from "@mui/material";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -27,7 +28,7 @@ import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 import { Lines } from "./Lines";
 
 const Box = motion(MuiBox);
-const MotionBox = motion(Box);
+const MotionBox = motion(MuiBox);
 
 /* -------------------- Routes Definition start ---------------------------- */
 const routes = [
@@ -79,10 +80,20 @@ export function App() {
     (route) => route.path === location.pathname
   )?.name;
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
+  const isLaptop = useMediaQuery(theme.breakpoints.up("md"));
+
   // Getting Lenis in the Game
   const lenis = useLenis(({ scroll }) => {
     // called every scroll
   });
+
+  /* Container Padding */
+  let containerPadding = "0 16px";
+  if (isTablet) containerPadding = "0 32px";
+  if (isLaptop) containerPadding = "0 64px";
 
   return (
     <>
@@ -92,16 +103,51 @@ export function App() {
         {/* Header START */}
         <header
           style={{
+            position: "fixed",
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "space-between",
+            alignItems: "center",
             pointerEvents: "none",
+            zIndex: "20",
+            top: ".5rem",
+            width: "100vw",
+            padding: containerPadding,
           }}
         >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="89"
+            height="28"
+            viewBox="0 0 89 28"
+            fill="none"
+          >
+            <path
+              d="M0 27.9999V0.329346H13.8353V4.28229H3.95294V12.1882H11.5294V16.1411H3.95294V23.7176H13.5059V27.9999H0Z"
+              fill="black"
+            />
+            <path
+              d="M17.7891 27.9999V0.329346H21.742V23.7176H31.6244V27.9999H17.7891Z"
+              fill="black"
+            />
+            <path
+              d="M35.5781 27.9999V0.329346H39.5311V21.4117L52.0487 0.329346H56.6605L40.5193 27.9999H35.5781Z"
+              fill="black"
+            />
+            <path
+              d="M59.293 27.9999V0.329346H63.2459V27.9999H59.293Z"
+              fill="black"
+            />
+            <path
+              d="M67.8594 27.6706V0H72.1417L84.33 20.4235V0H88.2829V27.6706H84.0006L71.8123 7.24706V27.6706H67.8594Z"
+              fill="black"
+            />
+          </svg>
           <Box
             style={{
               position: "relative",
               width: "400px",
               background: "#000",
+              height: "42px",
               color: "#fff",
               borderRadius: "50px",
               padding: "3px",
@@ -127,7 +173,7 @@ export function App() {
                 position: "relative",
                 zIndex: 2,
                 display: "flex",
-                color: "#fff",
+                height: "auto",
                 " .smooth-nav-container": {
                   width: "130px",
                   height: "36px",
@@ -155,6 +201,11 @@ export function App() {
               ))}
             </Box>
           </Box>
+          <Box
+            component="img"
+            src="profile-header.png"
+            sx={{ height: "48px" }}
+          />
         </header>
         {/* Header END */}
         <div className="container">
