@@ -10,6 +10,7 @@ import {
   NavLink,
   useLocation,
   useOutlet,
+  Link,
 } from "react-router-dom";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import {
@@ -104,9 +105,8 @@ export function App() {
         <header
           style={{
             position: "fixed",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
+            display: "grid",
+            gridTemplateColumns: "1fr 3fr 1fr",
             pointerEvents: "none",
             zIndex: "20",
             top: ".5rem",
@@ -114,98 +114,116 @@ export function App() {
             padding: containerPadding,
           }}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="89"
-            height="28"
-            viewBox="0 0 89 28"
-            fill="none"
-          >
-            <path
-              d="M0 27.9999V0.329346H13.8353V4.28229H3.95294V12.1882H11.5294V16.1411H3.95294V23.7176H13.5059V27.9999H0Z"
-              fill="black"
-            />
-            <path
-              d="M17.7891 27.9999V0.329346H21.742V23.7176H31.6244V27.9999H17.7891Z"
-              fill="black"
-            />
-            <path
-              d="M35.5781 27.9999V0.329346H39.5311V21.4117L52.0487 0.329346H56.6605L40.5193 27.9999H35.5781Z"
-              fill="black"
-            />
-            <path
-              d="M59.293 27.9999V0.329346H63.2459V27.9999H59.293Z"
-              fill="black"
-            />
-            <path
-              d="M67.8594 27.6706V0H72.1417L84.33 20.4235V0H88.2829V27.6706H84.0006L71.8123 7.24706V27.6706H67.8594Z"
-              fill="black"
-            />
-          </svg>
-          <Box
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="89"
+              height="28"
+              viewBox="0 0 89 28"
+              fill="none"
+            >
+              <path
+                d="M0 27.9999V0.329346H13.8353V4.28229H3.95294V12.1882H11.5294V16.1411H3.95294V23.7176H13.5059V27.9999H0Z"
+                fill="black"
+              />
+              <path
+                d="M17.7891 27.9999V0.329346H21.742V23.7176H31.6244V27.9999H17.7891Z"
+                fill="black"
+              />
+              <path
+                d="M35.5781 27.9999V0.329346H39.5311V21.4117L52.0487 0.329346H56.6605L40.5193 27.9999H35.5781Z"
+                fill="black"
+              />
+              <path
+                d="M59.293 27.9999V0.329346H63.2459V27.9999H59.293Z"
+                fill="black"
+              />
+              <path
+                d="M67.8594 27.6706V0H72.1417L84.33 20.4235V0H88.2829V27.6706H84.0006L71.8123 7.24706V27.6706H67.8594Z"
+                fill="black"
+              />
+            </svg>
+          </div>
+          <div
             style={{
-              position: "relative",
-              width: "400px",
-              background: "#000",
-              height: "42px",
-              color: "#fff",
-              borderRadius: "50px",
-              padding: "3px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
             <Box
-              layout
-              animate={navAnimation[currentRoute]}
-              initial={navAnimation[currentRoute]}
-              transition={{ type: "spring", bounce: 0.2, duration: 0.7 }}
-              sx={{
-                width: "130px",
-                height: "36px",
-                background: "#fff",
-                borderRadius: "50px",
-                position: "absolute",
-                zIndex: 1,
-              }}
-            />
-
-            <Box
-              sx={{
+              style={{
                 position: "relative",
-                zIndex: 2,
-                display: "flex",
-                height: "auto",
-                " .smooth-nav-container": {
-                  width: "130px",
-                  height: "36px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                },
-                " p": { textDecoration: "none" },
+                width: "400px",
+                background: "#000",
+                height: "42px",
+                color: "#fff",
+                borderRadius: "50px",
+                padding: "3px",
               }}
             >
-              {routes.map((route) => (
-                <NavLink
-                  key={route.path}
-                  as={NavLink}
-                  to={route.path}
-                  style={{ textDecoration: "none" }}
-                  className={({ isActive }) =>
-                    isActive ? "smooth-nav-active" : "smooth-nav-link"
-                  }
-                >
-                  <div className="smooth-nav-container body1">
-                    <p>{route.name}</p>
-                  </div>
-                </NavLink>
-              ))}
+              <Box
+                layout
+                animate={navAnimation[currentRoute]}
+                initial={navAnimation[currentRoute]}
+                transition={{ type: "spring", bounce: 0.2, duration: 0.7 }}
+                sx={{
+                  width: "130px",
+                  height: "36px",
+                  background: "#fff",
+                  borderRadius: "50px",
+                  position: "absolute",
+                  zIndex: 1,
+                }}
+              />
+
+              <Box
+                sx={{
+                  position: "relative",
+                  zIndex: 2,
+                  display: "flex",
+                  height: "auto",
+                  " .smooth-nav-container": {
+                    width: "130px",
+                    height: "36px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  },
+                  " p": { textDecoration: "none" },
+                }}
+              >
+                {routes.map((route) => (
+                  <NavLink
+                    key={route.path}
+                    as={NavLink}
+                    to={route.path}
+                    style={{ textDecoration: "none" }}
+                    className={({ isActive }) =>
+                      isActive ? "smooth-nav-active" : "smooth-nav-link"
+                    }
+                  >
+                    <div className="smooth-nav-container body1">
+                      <p>{route.name}</p>
+                    </div>
+                  </NavLink>
+                ))}
+              </Box>
             </Box>
-          </Box>
-          <Box
-            component="img"
-            src="profile-header.png"
-            sx={{ height: "48px" }}
-          />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "center",
+            }}
+          >
+            <Box
+              component="img"
+              src="profile-header.png"
+              sx={{ height: "48px" }}
+            />
+          </div>
         </header>
         {/* Header END */}
         <div className="container">
@@ -239,7 +257,8 @@ const sentenceVariants = {
     opacity: 1,
     y: "0%",
     transition: {
-      delayChildren: 0.3,
+      delay: 5,
+      delayChildren: 5.3,
       staggerChildren: 0.08,
     },
   },
@@ -256,59 +275,69 @@ const lineVariants = {
   },
 };
 
-const AnimatedLines = ({ projectLeave, projectEnter }) => {
+const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
   return (
-    <motion.div variants={sentenceVariants} initial="hidden" animate="visible">
-      <div style={{ overflow: "hidden" }}>
-        <motion.h1 variants={lineVariants} className="h1">
-          Hi, I am Elvin. A Frontend
-        </motion.h1>
-      </div>
-      <div style={{ overflow: "hidden" }}>
-        <motion.h1 variants={lineVariants} className="h1">
-          developer who turns complex
-        </motion.h1>
-      </div>
-      <div style={{ overflow: "hidden" }}>
-        <motion.h1 variants={lineVariants} className="h1">
-          designs into clean, user-friendly
-        </motion.h1>
-      </div>
-      <div style={{ overflow: "hidden" }}>
-        <motion.h1 variants={lineVariants} className="h1">
-          interfaces. I’m{" "}
-          <a onMouseEnter={projectEnter} onMouseLeave={projectLeave}>
-            quick
-          </a>{" "}
-          but I don’t
-        </motion.h1>
-      </div>
-      <div style={{ overflow: "hidden" }}>
-        <motion.h1 variants={lineVariants} className="h1">
-          let a single detail slip thanks to
-        </motion.h1>
-      </div>
-      <div style={{ overflow: "hidden" }}>
-        <motion.h1 variants={lineVariants} className="h1">
-          my background in UX design and
-        </motion.h1>
-      </div>
-      <div style={{ overflow: "hidden" }}>
-        <motion.h1 variants={lineVariants} className="h1">
-          deep knowledge on Frontend
-        </motion.h1>
-      </div>
-      <div style={{ overflow: "hidden" }}>
-        <motion.h1 variants={lineVariants} className="h1">
-          technologies, particularly React
-        </motion.h1>
-      </div>
-      <div style={{ overflow: "hidden" }}>
-        <motion.h1 variants={lineVariants} className="h1">
-          ecosystem
-        </motion.h1>
-      </div>
-    </motion.div>
+    <Box sx={{ paddingTop: "80px", ".h1": { textAlign: "center" } }}>
+      <motion.div
+        variants={sentenceVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <div style={{ overflow: "hidden" }}>
+          <motion.h1 variants={lineVariants} className="h1">
+            Hi, I am Elvin. A Frontend
+          </motion.h1>
+        </div>
+        <div style={{ overflow: "hidden" }}>
+          <motion.h1 variants={lineVariants} className="h1">
+            developer who turns complex
+          </motion.h1>
+        </div>
+        <div style={{ overflow: "hidden" }}>
+          <motion.h1 variants={lineVariants} className="h1">
+            designs into clean, user-friendly
+          </motion.h1>
+        </div>
+        <div style={{ overflow: "hidden" }}>
+          <motion.h1 variants={lineVariants} className="h1">
+            interfaces. I’m{" "}
+            <a
+              onMouseEnter={quickEnter}
+              onMouseLeave={quickLeave}
+              style={{ textDecoration: "underline" }}
+            >
+              quick
+            </a>{" "}
+            but I don’t
+          </motion.h1>
+        </div>
+        <div style={{ overflow: "hidden" }}>
+          <motion.h1 variants={lineVariants} className="h1">
+            let a single detail slip thanks to
+          </motion.h1>
+        </div>
+        <div style={{ overflow: "hidden" }}>
+          <motion.h1 variants={lineVariants} className="h1">
+            my background in UX design and
+          </motion.h1>
+        </div>
+        <div style={{ overflow: "hidden" }}>
+          <motion.h1 variants={lineVariants} className="h1">
+            deep knowledge on Frontend
+          </motion.h1>
+        </div>
+        <div style={{ overflow: "hidden" }}>
+          <motion.h1 variants={lineVariants} className="h1">
+            technologies, particularly React
+          </motion.h1>
+        </div>
+        <div style={{ overflow: "hidden" }}>
+          <motion.h1 variants={lineVariants} className="h1">
+            ecosystem
+          </motion.h1>
+        </div>
+      </motion.div>
+    </Box>
   );
 };
 function Home() {
@@ -335,10 +364,12 @@ function Home() {
   const variants = {
     default: {
       opacity: 1,
-      height: 10,
-      width: 10,
+      height: "10px",
+      width: "10px",
       fontSize: "16px",
-      backgroundColor: "#1e91d6",
+      background:
+        " linear-gradient(54deg, #EC0D78 0%, #FD2944 43.24%, #F84E37 72.80%, #FE880E 100%)",
+
       x: mouseXPosition,
       y: mouseYPosition,
       transition: {
@@ -346,26 +377,30 @@ function Home() {
         mass: 0.6,
       },
     },
-    project: {
+    open: {
       opacity: 1,
       // backgroundColor: "rgba(255, 255, 255, 0.6)",
-      backgroundColor: "#1e91d6",
-      color: "#000",
+      background:
+        " linear-gradient(54deg, #EC0D78 0%, #FD2944 43.24%, #F84E37 72.80%, #FE880E 100%)",
+      color: "#fff",
       height: 80,
       width: 80,
       fontSize: "18px",
       x: mouseXPosition - 32,
       y: mouseYPosition - 32,
     },
-    contact: {
+    homeUnderline: {
       opacity: 1,
-      backgroundColor: "#fff",
-      color: "#000",
-      height: 64,
-      width: 64,
+      backgroundColor: "transparent",
+      border: "2px solid #FE880E",
+      height: "180px",
+      width: "180px",
       fontSize: "32px",
       x: mouseXPosition - 48,
       y: mouseYPosition - 48,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
     },
   };
 
@@ -375,12 +410,12 @@ function Home() {
     damping: 28,
   };
 
-  function projectEnter(event) {
-    setCursorText("Copy");
-    setCursorVariant("project");
+  function openEnter(event) {
+    setCursorText("Open");
+    setCursorVariant("open");
   }
 
-  function projectLeave(event) {
+  function openLeave(event) {
     setCursorText("");
     setCursorVariant("default");
   }
@@ -411,10 +446,20 @@ function Home() {
     setCursorVariant("default");
   }
 
+  function quickEnter(event) {
+    setCursorText(
+      <Box component="img" sx={{ width: "100px" }} src="fast.png"></Box>
+    );
+    setCursorVariant("homeUnderline");
+  }
+  function quickLeave(event) {
+    setCursorText("");
+    setCursorVariant("default");
+  }
+
   return (
     <Box
       sx={{
-        border: "2px dashed red",
         height: "200vh",
         width: "100vw",
       }}
@@ -428,7 +473,56 @@ function Home() {
       >
         <span className="cursorText">{cursorText}</span>
       </motion.div>
-      <AnimatedLines projectEnter={projectEnter} projectLeave={projectLeave} />
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <Box
+          sx={{
+            background: "#aaa",
+            display: "flex",
+            borderRadius: "60px",
+            ".working-nav-link": {
+              width: "130px",
+              height: "36px",
+              cursor: "pointer",
+            },
+          }}
+        >
+          <Link
+            className="working-nav-link"
+            to="./"
+            onMouseEnter={openEnter}
+            onMouseLeave={openLeave}
+          >
+            <Box></Box>
+          </Link>
+          <Link
+            className="working-nav-link"
+            to="./projects"
+            onMouseEnter={openEnter}
+            onMouseLeave={openLeave}
+          >
+            <Box></Box>
+          </Link>
+          <Link
+            className="working-nav-link"
+            to="./contact"
+            onMouseEnter={openEnter}
+            onMouseLeave={openLeave}
+          >
+            <Box></Box>
+          </Link>
+        </Box>
+      </Box>
+      <AnimatedLines
+        openEnter={openEnter}
+        openLeave={openLeave}
+        quickEnter={quickEnter}
+        quickLeave={quickLeave}
+      />
     </Box>
   );
 }
