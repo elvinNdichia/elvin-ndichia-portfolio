@@ -263,12 +263,11 @@ export function App() {
 /* -------------------- Home START ---------------------------- */
 
 const sentenceVariants = {
-  hidden: { opacity: 0, y: "100%" },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    y: "0%",
     transition: {
-      delayChildren: 0.3,
+      delayChildren: 0.1,
       staggerChildren: 0.08,
     },
   },
