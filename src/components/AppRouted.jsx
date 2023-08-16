@@ -263,9 +263,8 @@ export function App() {
 /* -------------------- Home START ---------------------------- */
 
 const sentenceVariants = {
-  hidden: { opacity: 0 },
+  hidden: {},
   visible: {
-    opacity: 1,
     transition: {
       delayChildren: 0.1,
       staggerChildren: 0.08,
@@ -274,15 +273,65 @@ const sentenceVariants = {
 };
 
 const lineVariants = {
-  hidden: { opacity: 0, y: "100%" },
+  hidden: { y: "100%" },
   visible: {
-    opacity: 1,
     y: "0%",
     transition: {
       duration: 0.5,
     },
   },
 };
+
+const boxVariants = {
+  hidden: { height: "0px" },
+  visible: {
+    height: "100px",
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
+function AnimatedProjectsTitle() {
+  return (
+    <Box sx={{ h1: { textAlign: "center" } }}>
+      <motion.div
+        variants={sentenceVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <div style={{ overflow: "hidden" }}>
+          <motion.h1 variants={lineVariants} className="h1">
+            My next projects will always be
+          </motion.h1>
+        </div>
+        <div style={{ overflow: "hidden" }}>
+          <motion.h1 variants={lineVariants} className="h1">
+            significantly better than these 2
+          </motion.h1>
+        </div>
+        <div style={{ overflow: "hidden" }}>
+          <motion.h1 variants={lineVariants} className="h1">
+            side works
+          </motion.h1>
+        </div>
+        <div>
+          <motion.div
+            variants={boxVariants}
+            style={{
+              width: "100px",
+              background: "#ddd",
+              position: "relative",
+              display: "block",
+            }}
+          >
+            Hello
+          </motion.div>
+        </div>
+      </motion.div>
+    </Box>
+  );
+}
 
 const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
   return (
@@ -541,7 +590,11 @@ function Home() {
 /* -------------------- Home END ---------------------------- */
 /* -------------------- Projects START ---------------------------- */
 function Projects() {
-  return <>Home</>;
+  return (
+    <>
+      <AnimatedProjectsTitle />
+    </>
+  );
 }
 /* -------------------- Projects END ---------------------------- */
 /* -------------------- Contact START ---------------------------- */
