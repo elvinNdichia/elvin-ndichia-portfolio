@@ -130,8 +130,10 @@ export function CursorContextProvider({ children }) {
     >
       <Box
         sx={{
-          height: "200vh",
+          height: "100vh",
           width: "100vw",
+          overflowX: "hidden",
+          overflowY: "auto",
         }}
         ref={ref}
       >

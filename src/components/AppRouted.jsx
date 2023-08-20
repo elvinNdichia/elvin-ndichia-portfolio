@@ -13,6 +13,7 @@ import {
   Link,
 } from "react-router-dom";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
+import { Home } from "./pages/Home";
 import {
   htmlSVG,
   cssSVG,
@@ -111,154 +112,153 @@ export function App() {
     <>
       <LoaderView />
       <Lines />
-      <ReactLenis root>
-        {/* Header START */}
-        <header
+
+      {/* Header START */}
+      <header
+        style={{
+          position: "fixed",
+          display: "grid",
+          gridTemplateColumns: "1fr 3fr 1fr",
+          pointerEvents: "none",
+          zIndex: "20",
+          top: ".5rem",
+          width: "100vw",
+          padding: containerPadding,
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="89"
+            height="28"
+            viewBox="0 0 89 28"
+            fill="none"
+          >
+            <path
+              d="M0 27.9999V0.329346H13.8353V4.28229H3.95294V12.1882H11.5294V16.1411H3.95294V23.7176H13.5059V27.9999H0Z"
+              fill="black"
+            />
+            <path
+              d="M17.7891 27.9999V0.329346H21.742V23.7176H31.6244V27.9999H17.7891Z"
+              fill="black"
+            />
+            <path
+              d="M35.5781 27.9999V0.329346H39.5311V21.4117L52.0487 0.329346H56.6605L40.5193 27.9999H35.5781Z"
+              fill="black"
+            />
+            <path
+              d="M59.293 27.9999V0.329346H63.2459V27.9999H59.293Z"
+              fill="black"
+            />
+            <path
+              d="M67.8594 27.6706V0H72.1417L84.33 20.4235V0H88.2829V27.6706H84.0006L71.8123 7.24706V27.6706H67.8594Z"
+              fill="black"
+            />
+          </svg>
+        </div>
+        <div
           style={{
-            position: "fixed",
-            display: "grid",
-            gridTemplateColumns: "1fr 3fr 1fr",
-            pointerEvents: "none",
-            zIndex: "20",
-            top: ".5rem",
-            width: "100vw",
-            padding: containerPadding,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="89"
-              height="28"
-              viewBox="0 0 89 28"
-              fill="none"
-            >
-              <path
-                d="M0 27.9999V0.329346H13.8353V4.28229H3.95294V12.1882H11.5294V16.1411H3.95294V23.7176H13.5059V27.9999H0Z"
-                fill="black"
-              />
-              <path
-                d="M17.7891 27.9999V0.329346H21.742V23.7176H31.6244V27.9999H17.7891Z"
-                fill="black"
-              />
-              <path
-                d="M35.5781 27.9999V0.329346H39.5311V21.4117L52.0487 0.329346H56.6605L40.5193 27.9999H35.5781Z"
-                fill="black"
-              />
-              <path
-                d="M59.293 27.9999V0.329346H63.2459V27.9999H59.293Z"
-                fill="black"
-              />
-              <path
-                d="M67.8594 27.6706V0H72.1417L84.33 20.4235V0H88.2829V27.6706H84.0006L71.8123 7.24706V27.6706H67.8594Z"
-                fill="black"
-              />
-            </svg>
-          </div>
-          <div
+          <Box
             style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
+              position: "relative",
+              width: "400px",
+              background: "#000",
+              height: "42px",
+              color: "#fff",
+              borderRadius: "50px",
+              padding: "3px",
             }}
           >
             <Box
-              style={{
-                position: "relative",
-                width: "400px",
-                background: "#000",
-                height: "42px",
-                color: "#fff",
+              layout
+              animate={navAnimation[currentRoute]}
+              initial={navAnimation[currentRoute]}
+              transition={{ type: "spring", bounce: 0.2, duration: 0.7 }}
+              sx={{
+                width: "130px",
+                height: "36px",
+                background: "#fff",
                 borderRadius: "50px",
-                padding: "3px",
+                position: "absolute",
+                zIndex: 1,
               }}
-            >
-              <Box
-                layout
-                animate={navAnimation[currentRoute]}
-                initial={navAnimation[currentRoute]}
-                transition={{ type: "spring", bounce: 0.2, duration: 0.7 }}
-                sx={{
+            />
+
+            <Box
+              sx={{
+                position: "relative",
+                zIndex: 2,
+                display: "flex",
+                height: "auto",
+                " .smooth-nav-container": {
                   width: "130px",
                   height: "36px",
-                  background: "#fff",
-                  borderRadius: "50px",
-                  position: "absolute",
-                  zIndex: 1,
-                }}
-              />
-
-              <Box
-                sx={{
-                  position: "relative",
-                  zIndex: 2,
                   display: "flex",
-                  height: "auto",
-                  " .smooth-nav-container": {
-                    width: "130px",
-                    height: "36px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  },
-                  " p": { textDecoration: "none" },
-                }}
-              >
-                {routes.map((route) => (
-                  <NavLink
-                    key={route.path}
-                    as={NavLink}
-                    to={route.path}
-                    style={{ textDecoration: "none" }}
-                    className={({ isActive }) =>
-                      isActive ? "smooth-nav-active" : "smooth-nav-link"
-                    }
-                  >
-                    <div className="smooth-nav-container body1">
-                      <p>{route.name}</p>
-                    </div>
-                  </NavLink>
-                ))}
-              </Box>
-            </Box>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-end",
-              alignItems: "center",
-            }}
-          >
-            <Box
-              component="img"
-              src="profile-header.png"
-              sx={{ height: "48px" }}
-            />
-          </div>
-        </header>
-        {/* Header END */}
-        {showApp && (
-          <CursorContextProvider>
-            <div className="container">
-              <SwitchTransition>
-                <CSSTransition
-                  key={location.pathname}
-                  nodeRef={nodeRef}
-                  timeout={500}
-                  classNames="page"
-                  unmountOnExit
+                  alignItems: "center",
+                  justifyContent: "center",
+                },
+                " p": { textDecoration: "none" },
+              }}
+            >
+              {routes.map((route) => (
+                <NavLink
+                  key={route.path}
+                  as={NavLink}
+                  to={route.path}
+                  style={{ textDecoration: "none" }}
+                  className={({ isActive }) =>
+                    isActive ? "smooth-nav-active" : "smooth-nav-link"
+                  }
                 >
-                  {(state) => (
-                    <div ref={nodeRef} className="page">
-                      {currentOutlet}
-                    </div>
-                  )}
-                </CSSTransition>
-              </SwitchTransition>
-            </div>
-          </CursorContextProvider>
-        )}
-      </ReactLenis>
+                  <div className="smooth-nav-container body1">
+                    <p>{route.name}</p>
+                  </div>
+                </NavLink>
+              ))}
+            </Box>
+          </Box>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "center",
+          }}
+        >
+          <Box
+            component="img"
+            src="profile-header.png"
+            sx={{ height: "48px" }}
+          />
+        </div>
+      </header>
+      {/* Header END */}
+      {showApp && (
+        <CursorContextProvider>
+          <div className="container">
+            <SwitchTransition>
+              <CSSTransition
+                key={location.pathname}
+                nodeRef={nodeRef}
+                timeout={500}
+                classNames="page"
+                unmountOnExit
+              >
+                {(state) => (
+                  <div ref={nodeRef} className="page">
+                    {currentOutlet}
+                  </div>
+                )}
+              </CSSTransition>
+            </SwitchTransition>
+          </div>
+        </CursorContextProvider>
+      )}
     </>
   );
 }
@@ -402,78 +402,21 @@ const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
     </Box>
   );
 };
-function Home() {
-  const { quickEnter, quickLeave, openEnter, openLeave } = useCursorContext();
-  return (
-    <Box
-      sx={{
-        height: "200vh",
-        width: "100vw",
-      }}
-    >
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <Box
-          sx={{
-            background: "#aaa",
-            display: "flex",
-            borderRadius: "60px",
-            ".working-nav-link": {
-              width: "130px",
-              height: "36px",
-              cursor: "pointer",
-            },
-          }}
-        >
-          <Link
-            className="working-nav-link"
-            to="/"
-            onMouseEnter={openEnter}
-            onMouseLeave={openLeave}
-          >
-            <Box></Box>
-          </Link>
-          <Link
-            className="working-nav-link"
-            to="/projects"
-            onMouseEnter={openEnter}
-            onMouseLeave={openLeave}
-          >
-            <Box></Box>
-          </Link>
-          <Link
-            className="working-nav-link"
-            to="/contact"
-            onMouseEnter={openEnter}
-            onMouseLeave={openLeave}
-          >
-            <Box></Box>
-          </Link>
-        </Box>
-      </Box>
-      <div style={{ marginTop: "20px" }}>
-        <AnimatedLines
-          openEnter={openEnter}
-          openLeave={openLeave}
-          quickEnter={quickEnter}
-          quickLeave={quickLeave}
-        />
-      </div>
-      <NavigateButton location="Projects" />
-    </Box>
-  );
-}
+
 /* -------------------- Home END ---------------------------- */
 /* -------------------- Projects START ---------------------------- */
 function Projects() {
   return (
-    <>
-      <AnimatedProjectsTitle />
-    </>
+    <Box
+      sx={{
+        height: "100vh",
+        width: "90vw",
+      }}
+    >
+      <Box sx={{ height: "200vh", background: "#eee" }}>
+        <AnimatedProjectsTitle />
+      </Box>
+    </Box>
   );
 }
 /* -------------------- Projects END ---------------------------- */
@@ -483,7 +426,7 @@ function Contact() {
   return (
     <Box
       sx={{
-        height: "200vh",
+        height: "100vh",
         width: "100vw",
       }}
     >
