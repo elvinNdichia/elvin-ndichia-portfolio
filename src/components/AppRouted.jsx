@@ -431,7 +431,7 @@ function Home() {
         >
           <Link
             className="working-nav-link"
-            to="./"
+            to="/"
             onMouseEnter={openEnter}
             onMouseLeave={openLeave}
           >
@@ -439,7 +439,7 @@ function Home() {
           </Link>
           <Link
             className="working-nav-link"
-            to="./projects"
+            to="/projects"
             onMouseEnter={openEnter}
             onMouseLeave={openLeave}
           >
@@ -447,7 +447,7 @@ function Home() {
           </Link>
           <Link
             className="working-nav-link"
-            to="./contact"
+            to="/contact"
             onMouseEnter={openEnter}
             onMouseLeave={openLeave}
           >
@@ -507,7 +507,7 @@ function Contact() {
         >
           <Link
             className="working-nav-link"
-            to="./"
+            to="/"
             onMouseEnter={openEnter}
             onMouseLeave={openLeave}
           >
@@ -515,7 +515,7 @@ function Contact() {
           </Link>
           <Link
             className="working-nav-link"
-            to="./projects"
+            to="/projects"
             onMouseEnter={openEnter}
             onMouseLeave={openLeave}
           >
@@ -523,7 +523,7 @@ function Contact() {
           </Link>
           <Link
             className="working-nav-link"
-            to="./contact"
+            to="/contact"
             onMouseEnter={openEnter}
             onMouseLeave={openLeave}
           >
