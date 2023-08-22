@@ -115,8 +115,13 @@ export function Home() {
     >
       <Box
         sx={{
-          display: "flex",
+          display: { xs: "none", md: "flex" },
           justifyContent: "center",
+          position: "fixed",
+          width: "100%",
+          top: "1rem",
+          left: 0,
+          right: 0,
         }}
       >
         <Box

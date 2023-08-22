@@ -203,7 +203,7 @@ export function App() {
           <Box
             component="svg"
             xmlns="http://www.w3.org/2000/svg"
-            sx={{ width: { xs: "69px", md: "89px" } }}
+            sx={{ width: { xs: "79px", md: "89px" } }}
             viewBox="0 0 89 28"
             fill="none"
           >
@@ -505,8 +505,13 @@ function Contact() {
     >
       <Box
         sx={{
-          display: "flex",
+          display: { xs: "none", md: "flex" },
           justifyContent: "center",
+          position: "fixed",
+          width: "100%",
+          top: "1rem",
+          left: 0,
+          right: 0,
         }}
       >
         <Box
