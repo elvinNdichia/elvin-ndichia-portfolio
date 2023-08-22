@@ -162,15 +162,27 @@ export function Home() {
           </Link>
         </Box>
       </Box>
-      <div style={{ marginTop: "20px" }}>
-        <AnimatedLines
-          openEnter={openEnter}
-          openLeave={openLeave}
-          quickEnter={quickEnter}
-          quickLeave={quickLeave}
-        />
-      </div>
-      <NavigateButton location="Projects" />
+      <Box
+        sx={{
+          width: "100vw",
+          height: { xs: "calc(100vh - 56px)", md: "calc(100vh - 64px)" },
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Box>
+          <AnimatedLines
+            openEnter={openEnter}
+            openLeave={openLeave}
+            quickEnter={quickEnter}
+            quickLeave={quickLeave}
+          />
+          <Box>
+            <NavigateButton location="Projects" />
+          </Box>
+        </Box>
+      </Box>
     </Box>
   );
 }
