@@ -114,11 +114,12 @@ export function App() {
       <Lines />
 
       {/* Header START */}
-      <header
-        style={{
+      <Box
+        component="header"
+        sx={{
           position: "fixed",
           display: "grid",
-          gridTemplateColumns: "1fr 3fr 1fr",
+          gridTemplateColumns: { xs: "1fr 1fr", md: "1fr 3fr 1fr" },
           pointerEvents: "none",
           zIndex: "20",
           top: ".5rem",
@@ -127,10 +128,10 @@ export function App() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center" }}>
-          <svg
+          <Box
+            component="svg"
             xmlns="http://www.w3.org/2000/svg"
-            width="89"
-            height="28"
+            sx={{ width: { xs: "69px", md: "89px" } }}
             viewBox="0 0 89 28"
             fill="none"
           >
@@ -154,11 +155,11 @@ export function App() {
               d="M67.8594 27.6706V0H72.1417L84.33 20.4235V0H88.2829V27.6706H84.0006L71.8123 7.24706V27.6706H67.8594Z"
               fill="black"
             />
-          </svg>
+          </Box>
         </div>
-        <div
-          style={{
-            display: "flex",
+        <Box
+          sx={{
+            display: { xs: "none", md: "flex" },
             justifyContent: "center",
             alignItems: "center",
           }}
@@ -222,7 +223,7 @@ export function App() {
               ))}
             </Box>
           </Box>
-        </div>
+        </Box>
         <div
           style={{
             display: "flex",
@@ -233,10 +234,10 @@ export function App() {
           <Box
             component="img"
             src="profile-header.png"
-            sx={{ height: "48px" }}
+            sx={{ height: { xs: "40px", md: "48px" } }}
           />
         </div>
-      </header>
+      </Box>
       {/* Header END */}
       {showApp && (
         <CursorContextProvider>
