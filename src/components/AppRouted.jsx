@@ -114,6 +114,78 @@ export function App() {
       <Lines />
 
       {/* Header START */}
+      {/* Starting with mobile header */}
+      <Box
+        sx={{
+          position: "fixed",
+          display: {
+            xs: "flex",
+            md: "none",
+          },
+          bottom: "1rem",
+          left: 0,
+          right: 0,
+          width: "100%",
+          justifyContent: "center",
+          zIndex: 2,
+        }}
+      >
+        <Box
+          sx={{
+            display: { xs: "flex", md: "none" },
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Box
+            style={{
+              position: "relative",
+              width: "306px",
+              background: "#000",
+              height: "42px",
+              color: "#fff",
+              borderRadius: "50px",
+              padding: "3px",
+            }}
+          >
+            <div></div>
+
+            <Box
+              sx={{
+                position: "relative",
+                zIndex: 2,
+                display: "flex",
+                height: "auto",
+                " .smooth-nav-container": {
+                  width: "100px",
+                  height: "36px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                },
+                " p": { textDecoration: "none" },
+              }}
+            >
+              {routes.map((route) => (
+                <NavLink
+                  key={route.path}
+                  as={NavLink}
+                  to={route.path}
+                  style={{ textDecoration: "none" }}
+                  className={({ isActive }) =>
+                    isActive ? "smooth-nav-active" : "smooth-nav-link"
+                  }
+                >
+                  <div className="smooth-nav-container body1">
+                    <p>{route.name}</p>
+                  </div>
+                </NavLink>
+              ))}
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+      {/* Ending with mobile header */}
       <Box
         component="header"
         sx={{
