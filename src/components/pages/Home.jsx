@@ -3,7 +3,7 @@ import { useCursorContext } from "../CursorContext";
 import { Box as MuiBox } from "@mui/system";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { NavLink, useLocation, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { NavigateButton } from "../NavigateButton";
 
 const Box = motion(MuiBox);
@@ -29,9 +29,9 @@ const lineVariants = {
 };
 
 const boxVariants = {
-  hidden: { height: "0px" },
+  hidden: { y: "100%" },
   visible: {
-    height: "100px",
+    y: "0%",
     transition: {
       duration: 0.5,
     },
@@ -98,6 +98,26 @@ const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
           <motion.h1 variants={lineVariants} className="h1">
             ecosystem
           </motion.h1>
+        </div>
+        <div
+          style={{
+            overflow: "hidden",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <motion.div
+            variants={boxVariants}
+            style={{
+              position: "relative",
+              display: "block",
+              marginTop: "14px",
+            }}
+          >
+            <div onMouseEnter={openEnter} onMouseLeave={openLeave}>
+              <NavigateButton location="Projects" />
+            </div>
+          </motion.div>
         </div>
       </motion.div>
     </Box>
@@ -178,9 +198,6 @@ export function Home() {
             quickEnter={quickEnter}
             quickLeave={quickLeave}
           />
-          <Box>
-            <NavigateButton location="Projects" />
-          </Box>
         </Box>
       </Box>
     </Box>
