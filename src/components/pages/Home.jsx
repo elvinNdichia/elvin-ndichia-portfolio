@@ -123,7 +123,7 @@ const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
         <Box
           sx={{
             position: "fixed",
-            bottom: "-100px",
+            bottom: "-150px",
             right: "-40px",
           }}
         >
