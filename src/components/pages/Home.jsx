@@ -120,9 +120,15 @@ const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
             </div>
           </motion.div>
         </div>
-        <Box sx={{ position: "fixed", bottom: "-16px", right: 0 }}>
+        <Box
+          sx={{
+            position: "fixed",
+            bottom: "-100px",
+            right: "-40px",
+          }}
+        >
           <motion.div variants={imageVariants}>
-            <Box component="img" sx={{ width: "250px" }} src="hello-hand.png" />
+            <Box component="img" sx={{ width: "300px" }} src="hello-hand.png" />
           </motion.div>
         </Box>
       </motion.div>
