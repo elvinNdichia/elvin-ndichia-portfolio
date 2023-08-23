@@ -14,6 +14,7 @@ import {
 } from "react-router-dom";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import { Home } from "./pages/Home";
+import { Contact } from "./pages/Contact";
 import {
   htmlSVG,
   cssSVG,
@@ -494,76 +495,7 @@ function Projects() {
 }
 /* -------------------- Projects END ---------------------------- */
 /* -------------------- Contact START ---------------------------- */
-function Contact() {
-  const { quickEnter, quickLeave, openEnter, openLeave } = useCursorContext();
-  return (
-    <Box
-      sx={{
-        height: "100vh",
-        width: "100vw",
-      }}
-    >
-      <Box
-        sx={{
-          display: { xs: "none", md: "flex" },
-          justifyContent: "center",
-          position: "fixed",
-          width: "100%",
-          top: "1rem",
-          left: 0,
-          right: 0,
-        }}
-      >
-        <Box
-          sx={{
-            background: "#aaa",
-            display: "flex",
-            borderRadius: "60px",
-            ".working-nav-link": {
-              width: "130px",
-              height: "36px",
-              cursor: "pointer",
-            },
-          }}
-        >
-          <Link
-            className="working-nav-link"
-            to="/"
-            onMouseEnter={openEnter}
-            onMouseLeave={openLeave}
-          >
-            <Box></Box>
-          </Link>
-          <Link
-            className="working-nav-link"
-            to="/projects"
-            onMouseEnter={openEnter}
-            onMouseLeave={openLeave}
-          >
-            <Box></Box>
-          </Link>
-          <Link
-            className="working-nav-link"
-            to="/contact"
-            onMouseEnter={openEnter}
-            onMouseLeave={openLeave}
-          >
-            <Box></Box>
-          </Link>
-        </Box>
-      </Box>
-      <div style={{ marginTop: "20px" }}>
-        <AnimatedLines
-          openEnter={openEnter}
-          openLeave={openLeave}
-          quickEnter={quickEnter}
-          quickLeave={quickLeave}
-        />
-      </div>
-      <NavigateButton location="Projects" />
-    </Box>
-  );
-}
+
 /* -------------------- Contact END ---------------------------- */
 
 /* -------------------- Logo animation start ---------------------------- */

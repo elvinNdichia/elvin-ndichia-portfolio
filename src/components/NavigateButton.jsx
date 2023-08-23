@@ -33,11 +33,11 @@ const boxVariants = {
   },
 };
 
-export function NavigateButton({ location }) {
+export function NavigateButton({ location, link }) {
   return (
     <Link
       className="working-nav-link"
-      to={"/" + location.toLowerCase()}
+      to={link}
       style={{ textDecoration: "none" }}
     >
       <Box sx={{ display: "flex", justifyContent: "center" }}>

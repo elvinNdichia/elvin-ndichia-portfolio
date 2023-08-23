@@ -116,7 +116,7 @@ const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
             }}
           >
             <div onMouseEnter={openEnter} onMouseLeave={openLeave}>
-              <NavigateButton location="Projects" />
+              <NavigateButton location="Projects" link="/projects" />
             </div>
           </motion.div>
         </div>
@@ -124,7 +124,7 @@ const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
           sx={{
             position: "fixed",
             bottom: "-150px",
-            right: "-40px",
+            right: "-50px",
           }}
         >
           <motion.div variants={imageVariants}>
