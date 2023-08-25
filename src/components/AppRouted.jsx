@@ -240,7 +240,7 @@ export function App() {
           <Box
             style={{
               position: "relative",
-              width: "400px",
+              width: "399px",
               background: "#000",
               height: "42px",
               color: "#fff",
