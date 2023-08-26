@@ -104,6 +104,14 @@ body {
   line-height: 24px; /* 150% */
   letter-spacing: 0.5px;
 }
+@media (min-width: 0px) and (max-width: 580px) {
+  .h5 {
+    font-family: "Work Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+  }
+}
 .body2 {
   font-family: "Work Sans";
   font-size: 16px;
