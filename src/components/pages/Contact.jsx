@@ -5,6 +5,7 @@ import { Box as MuiBox } from "@mui/system";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { NavigateButton } from "../NavigateButton";
+import { useState } from "react";
 
 const Box = motion(MuiBox);
 
@@ -40,6 +41,12 @@ const boxVariants = {
 const imageVariants = {};
 
 const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
+  const [thingBeingHovered, setThingBeingHovered] = useState("");
+
+  const getOpacity = (hoverKey) => {
+    return thingBeingHovered === hoverKey || thingBeingHovered === "" ? 1 : 0.5;
+  };
+
   return (
     <Box sx={{ paddingTop: "80px", ".h1": { textAlign: "center" } }}>
       <motion.div
@@ -62,7 +69,6 @@ const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
             better
           </motion.h1>
         </div>
-
         <div
           style={{
             overflow: "hidden",
@@ -89,6 +95,15 @@ const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
             overflow: "hidden",
             display: "flex",
             justifyContent: "center",
+            opacity: getOpacity("gmail"),
+          }}
+          onMouseEnter={() => {
+            setThingBeingHovered("gmail");
+            openEnter();
+          }}
+          onMouseLeave={() => {
+            setThingBeingHovered("");
+            openLeave();
           }}
         >
           <motion.div
@@ -112,6 +127,15 @@ const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
             overflow: "hidden",
             display: "flex",
             justifyContent: "center",
+            opacity: getOpacity("phone"),
+          }}
+          onMouseEnter={() => {
+            setThingBeingHovered("phone");
+            openEnter();
+          }}
+          onMouseLeave={() => {
+            setThingBeingHovered("");
+            openLeave();
           }}
         >
           <motion.div
@@ -135,6 +159,15 @@ const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
             overflow: "hidden",
             display: "flex",
             justifyContent: "center",
+            opacity: getOpacity("linkedin"),
+          }}
+          onMouseEnter={() => {
+            setThingBeingHovered("linkedin");
+            openEnter();
+          }}
+          onMouseLeave={() => {
+            setThingBeingHovered("");
+            openLeave();
           }}
         >
           <motion.div
@@ -158,6 +191,15 @@ const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
             overflow: "hidden",
             display: "flex",
             justifyContent: "center",
+            opacity: getOpacity("twitter"),
+          }}
+          onMouseEnter={() => {
+            setThingBeingHovered("twitter");
+            openEnter();
+          }}
+          onMouseLeave={() => {
+            setThingBeingHovered("");
+            openLeave();
           }}
         >
           <motion.div
@@ -176,13 +218,7 @@ const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
             </Box>
           </motion.div>
         </div>
-        <Box
-          sx={{
-            position: "fixed",
-            bottom: "-150px",
-            right: "-50px",
-          }}
-        >
+        <Box sx={{ position: "fixed", bottom: "-150px", right: "-50px" }}>
           <motion.div variants={imageVariants}>
             <Box component="img" sx={{ width: "250px" }} src="wave-hand.png" />
           </motion.div>
