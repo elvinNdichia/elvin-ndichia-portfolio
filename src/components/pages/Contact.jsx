@@ -48,207 +48,238 @@ const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
   };
 
   return (
-    <Box sx={{ paddingTop: "80px", ".h1": { textAlign: "center" } }}>
-      <motion.div
-        variants={sentenceVariants}
-        initial="hidden"
-        animate="visible"
+    <>
+      {/* Mobile Below */}
+      <Box
+        sx={{
+          paddingTop: "80px",
+          ".h1": { textAlign: "center" },
+          display: { xs: "block", md: "block" },
+        }}
       >
-        <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            Tell me how I can help you
-          </motion.h1>
-        </div>
-        <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            make the world a little
-          </motion.h1>
-        </div>
-        <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            better
-          </motion.h1>
-        </div>
-        <div
-          style={{
-            overflow: "hidden",
-            display: "flex",
-            justifyContent: "center",
-          }}
+        <motion.div
+          variants={sentenceVariants}
+          initial="hidden"
+          animate="visible"
         >
-          <motion.div
-            variants={boxVariants}
+          <div style={{ overflow: "hidden" }}>
+            <motion.h1 variants={lineVariants} className="h1">
+              <Box sx={{ display: { xs: "none", md: "block" } }}>
+                Tell me how I can help you
+              </Box>
+              <Box sx={{ display: { xs: "block", md: "none" } }}>
+                Tell me how I can
+              </Box>
+            </motion.h1>
+          </div>
+          <div style={{ overflow: "hidden" }}>
+            <motion.h1 variants={lineVariants} className="h1">
+              <Box sx={{ display: { xs: "none", md: "block" } }}>
+                make the world a little
+              </Box>
+              <Box sx={{ display: { xs: "block", md: "none" } }}>
+                help you make
+              </Box>
+            </motion.h1>
+          </div>
+          <div style={{ overflow: "hidden" }}>
+            <motion.h1 variants={lineVariants} className="h1">
+              <Box sx={{ display: { xs: "none", md: "block" } }}>better</Box>
+              <Box sx={{ display: { xs: "block", md: "none" } }}>
+                the world a little
+              </Box>
+            </motion.h1>
+          </div>
+          <div style={{ overflow: "hidden" }}>
+            <motion.h1 variants={lineVariants} className="h1">
+              <Box sx={{ display: { xs: "block", md: "none" } }}>better</Box>
+            </motion.h1>
+          </div>
+          <div
             style={{
-              position: "relative",
-              display: "block",
-              marginTop: "14px",
+              overflow: "hidden",
+              display: "flex",
+              justifyContent: "center",
             }}
           >
-            <div onMouseEnter={openEnter} onMouseLeave={openLeave}>
-              <NavigateButton location="Home" link="/" />
+            <motion.div
+              variants={boxVariants}
+              style={{
+                position: "relative",
+                display: "block",
+                marginTop: "14px",
+              }}
+            >
+              <div onMouseEnter={openEnter} onMouseLeave={openLeave}>
+                <NavigateButton location="Home" link="/" />
+              </div>
+            </motion.div>
+          </div>
+          <div style={{ marginTop: "56px" }} />
+          <a
+            href="mailto:elvinndichia@gmail.com"
+            style={{ color: "#000", textDecoration: "none" }}
+          >
+            <div
+              style={{
+                overflow: "hidden",
+                display: "flex",
+                justifyContent: "center",
+                opacity: getOpacity("gmail"),
+              }}
+              onMouseEnter={() => {
+                setThingBeingHovered("gmail");
+                openEnter();
+              }}
+              onMouseLeave={() => {
+                setThingBeingHovered("");
+                openLeave();
+              }}
+            >
+              <motion.div
+                variants={boxVariants}
+                style={{
+                  position: "relative",
+                  display: "block",
+                  marginTop: "14px",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                {gmailSVG}
+                <Box>
+                  <p className="h5">elvinndichia@gmail.com</p>
+                </Box>
+              </motion.div>
             </div>
-          </motion.div>
-        </div>
-        <div style={{ marginTop: "56px" }} />
-        <a
-          href="mailto:elvinndichia@gmail.com"
-          style={{ color: "#000", textDecoration: "none" }}
-        >
-          <div
-            style={{
-              overflow: "hidden",
-              display: "flex",
-              justifyContent: "center",
-              opacity: getOpacity("gmail"),
-            }}
-            onMouseEnter={() => {
-              setThingBeingHovered("gmail");
-              openEnter();
-            }}
-            onMouseLeave={() => {
-              setThingBeingHovered("");
-              openLeave();
-            }}
+          </a>
+          <a
+            href="tel:+237670907115"
+            style={{ color: "#000", textDecoration: "none" }}
           >
-            <motion.div
-              variants={boxVariants}
+            <div
               style={{
-                position: "relative",
-                display: "block",
-                marginTop: "14px",
+                overflow: "hidden",
                 display: "flex",
-                alignItems: "center",
+                justifyContent: "center",
+                opacity: getOpacity("phone"),
+              }}
+              onMouseEnter={() => {
+                setThingBeingHovered("phone");
+                openEnter();
+              }}
+              onMouseLeave={() => {
+                setThingBeingHovered("");
+                openLeave();
               }}
             >
-              {gmailSVG}
-              <Box>
-                <p className="h5">elvinndichia@gmail.com</p>
-              </Box>
-            </motion.div>
-          </div>
-        </a>
-        <a
-          href="tel:+237670907115"
-          style={{ color: "#000", textDecoration: "none" }}
-        >
-          <div
-            style={{
-              overflow: "hidden",
-              display: "flex",
-              justifyContent: "center",
-              opacity: getOpacity("phone"),
-            }}
-            onMouseEnter={() => {
-              setThingBeingHovered("phone");
-              openEnter();
-            }}
-            onMouseLeave={() => {
-              setThingBeingHovered("");
-              openLeave();
-            }}
+              <motion.div
+                variants={boxVariants}
+                style={{
+                  position: "relative",
+                  display: "block",
+                  marginTop: "14px",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                {phoneSVG}
+                <Box>
+                  <p className="h5">+237 670907115</p>
+                </Box>
+              </motion.div>
+            </div>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/elvin-ndichia-ab9aa31a5/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#000", textDecoration: "none" }}
           >
-            <motion.div
-              variants={boxVariants}
+            <div
               style={{
-                position: "relative",
-                display: "block",
-                marginTop: "14px",
+                overflow: "hidden",
                 display: "flex",
-                alignItems: "center",
+                justifyContent: "center",
+                opacity: getOpacity("linkedin"),
+              }}
+              onMouseEnter={() => {
+                setThingBeingHovered("linkedin");
+                openEnter();
+              }}
+              onMouseLeave={() => {
+                setThingBeingHovered("");
+                openLeave();
               }}
             >
-              {phoneSVG}
-              <Box>
-                <p className="h5">+237 670907115</p>
-              </Box>
-            </motion.div>
-          </div>
-        </a>
-        <a
-          href="https://www.linkedin.com/in/elvin-ndichia-ab9aa31a5/"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: "#000", textDecoration: "none" }}
-        >
-          <div
-            style={{
-              overflow: "hidden",
-              display: "flex",
-              justifyContent: "center",
-              opacity: getOpacity("linkedin"),
-            }}
-            onMouseEnter={() => {
-              setThingBeingHovered("linkedin");
-              openEnter();
-            }}
-            onMouseLeave={() => {
-              setThingBeingHovered("");
-              openLeave();
-            }}
+              <motion.div
+                variants={boxVariants}
+                style={{
+                  position: "relative",
+                  display: "block",
+                  marginTop: "14px",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                {linkedInSVG}
+                <Box>
+                  <p className="h5">LinkedIN</p>
+                </Box>
+              </motion.div>
+            </div>
+          </a>
+          <a
+            href="https://twitter.com/elvinNdichia"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#000", textDecoration: "none" }}
           >
-            <motion.div
-              variants={boxVariants}
+            <div
               style={{
-                position: "relative",
-                display: "block",
-                marginTop: "14px",
+                overflow: "hidden",
                 display: "flex",
-                alignItems: "center",
+                justifyContent: "center",
+                opacity: getOpacity("twitter"),
+              }}
+              onMouseEnter={() => {
+                setThingBeingHovered("twitter");
+                openEnter();
+              }}
+              onMouseLeave={() => {
+                setThingBeingHovered("");
+                openLeave();
               }}
             >
-              {linkedInSVG}
-              <Box>
-                <p className="h5">LinkedIN</p>
-              </Box>
+              <motion.div
+                variants={boxVariants}
+                style={{
+                  position: "relative",
+                  display: "block",
+                  marginTop: "14px",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                {twitterSVG}
+                <Box>
+                  <p className="h5">Twitter | X</p>
+                </Box>
+              </motion.div>
+            </div>
+          </a>
+          <Box sx={{ position: "fixed", bottom: "-150px", right: "-50px" }}>
+            <motion.div variants={imageVariants}>
+              <Box
+                component="img"
+                sx={{ width: "250px" }}
+                src="wave-hand.png"
+              />
             </motion.div>
-          </div>
-        </a>
-        <a
-          href="https://twitter.com/elvinNdichia"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: "#000", textDecoration: "none" }}
-        >
-          <div
-            style={{
-              overflow: "hidden",
-              display: "flex",
-              justifyContent: "center",
-              opacity: getOpacity("twitter"),
-            }}
-            onMouseEnter={() => {
-              setThingBeingHovered("twitter");
-              openEnter();
-            }}
-            onMouseLeave={() => {
-              setThingBeingHovered("");
-              openLeave();
-            }}
-          >
-            <motion.div
-              variants={boxVariants}
-              style={{
-                position: "relative",
-                display: "block",
-                marginTop: "14px",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              {twitterSVG}
-              <Box>
-                <p className="h5">Twitter | X</p>
-              </Box>
-            </motion.div>
-          </div>
-        </a>
-        <Box sx={{ position: "fixed", bottom: "-150px", right: "-50px" }}>
-          <motion.div variants={imageVariants}>
-            <Box component="img" sx={{ width: "250px" }} src="wave-hand.png" />
-          </motion.div>
-        </Box>
-      </motion.div>
-    </Box>
+          </Box>
+        </motion.div>
+      </Box>
+    </>
   );
 };
 
