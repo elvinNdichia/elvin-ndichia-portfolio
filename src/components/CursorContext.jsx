@@ -137,16 +137,15 @@ export function CursorContextProvider({ children }) {
         }}
         ref={ref}
       >
-        <Box sx={{ display: { xs: "none", md: "block" } }}>
-          <motion.div
-            variants={variants}
-            className="circle"
-            animate={cursorVariant}
-            transition={spring}
-          >
-            <span className="cursorText">{cursorText}</span>
-          </motion.div>
-        </Box>
+        <motion.div
+          variants={variants}
+          className="circle"
+          animate={cursorVariant}
+          transition={spring}
+        >
+          <span className="cursorText">{cursorText}</span>
+        </motion.div>
+
         {children}
       </Box>
     </CursorContext.Provider>

@@ -205,6 +205,7 @@ export function Home() {
       >
         <Box
           sx={{
+            zIndex: 2,
             background: "#aaa",
             display: "flex",
             borderRadius: "60px",
@@ -259,7 +260,7 @@ export function Home() {
           />
           <Box
             sx={{
-              height: { xs: "56px", md: "64px" },
+              height: { xs: "64px", md: "0" },
             }}
           />
         </Box>
