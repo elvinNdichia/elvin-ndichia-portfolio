@@ -54,6 +54,14 @@ const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
         sx={{
           paddingTop: "80px",
           ".h1": { textAlign: "center" },
+          ".h5": {
+            textShadow: `
+          -1px -1px 0 #fff,  
+          1px -1px 0 #fff,
+          -1px 1px 0 #fff,
+          1px 1px 0 #fff
+        `,
+          },
           display: { xs: "block", md: "block" },
         }}
       >
@@ -268,15 +276,6 @@ const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
               </motion.div>
             </div>
           </a>
-          <Box sx={{ position: "fixed", bottom: "-150px", right: "-50px" }}>
-            <motion.div variants={imageVariants}>
-              <Box
-                component="img"
-                sx={{ width: "250px" }}
-                src="wave-hand.png"
-              />
-            </motion.div>
-          </Box>
         </motion.div>
       </Box>
     </>
@@ -350,7 +349,7 @@ export function Contact() {
           justifyContent: "center",
         }}
       >
-        <Box>
+        <Box sx={{ zIndex: 1 }}>
           <AnimatedLines
             openEnter={openEnter}
             openLeave={openLeave}
@@ -358,6 +357,21 @@ export function Contact() {
             quickLeave={quickLeave}
           />
         </Box>
+      </Box>
+      <Box
+        sx={{
+          position: "fixed",
+          bottom: { xs: "-50px", md: "-150px" },
+          right: { xs: "-10px", md: "-50px" },
+        }}
+      >
+        <motion.div variants={imageVariants}>
+          <Box
+            component="img"
+            sx={{ width: { xs: "160px", md: "250px" } }}
+            src="wave-hand.png"
+          />
+        </motion.div>
       </Box>
     </Box>
   );
