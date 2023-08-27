@@ -206,6 +206,7 @@ export function Home() {
       >
         <Box
           sx={{
+            zIndex: 2,
             background: "#aaa",
             display: "flex",
             borderRadius: "60px",
@@ -258,6 +259,26 @@ export function Home() {
             quickEnter={quickEnter}
             quickLeave={quickLeave}
           />
+          <Box
+            sx={{
+              height: { xs: "64px", md: "0" },
+            }}
+          />
+        </Box>
+        <Box
+          sx={{
+            position: "fixed",
+            bottom: { xs: "-50px", md: "-150px" },
+            right: { xs: "-10px", md: "-50px" },
+          }}
+        >
+          <motion.div variants={imageVariants}>
+            <Box
+              component="img"
+              sx={{ width: { xs: "160px", md: "250px" } }}
+              src="hello-hand.png"
+            />
+          </motion.div>
         </Box>
       </Box>
       <Box

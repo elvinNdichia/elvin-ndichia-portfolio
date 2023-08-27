@@ -356,6 +356,11 @@ export function Contact() {
             quickEnter={quickEnter}
             quickLeave={quickLeave}
           />
+          <Box
+            sx={{
+              height: { xs: "64px", md: "0" },
+            }}
+          />
         </Box>
       </Box>
       <Box

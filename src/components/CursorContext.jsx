@@ -145,6 +145,7 @@ export function CursorContextProvider({ children }) {
         >
           <span className="cursorText">{cursorText}</span>
         </motion.div>
+
         {children}
       </Box>
     </CursorContext.Provider>
