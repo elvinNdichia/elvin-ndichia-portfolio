@@ -41,7 +41,7 @@ const imageVariants = {};
 
 function AnimatedProjectsTitle() {
   return (
-    <Box sx={{ h1: { textAlign: "center" } }}>
+    <Box sx={{ paddingTop: "80px", h1: { textAlign: "center" } }}>
       <motion.div
         variants={sentenceVariants}
         initial="hidden"
@@ -82,14 +82,64 @@ function AnimatedProjectsTitle() {
 
 export function Projects() {
   const { quickEnter, quickLeave, openEnter, openLeave } = useCursorContext();
+
   return (
     <Box
       sx={{
         height: "100vh",
-        width: "90vw",
+        width: "100vw",
       }}
     >
-      <Box sx={{ height: "200vh", background: "#eee" }}>
+      <Box
+        sx={{
+          display: { xs: "none", md: "flex" },
+          justifyContent: "center",
+          position: "fixed",
+          width: "100%",
+          top: "1rem",
+          left: 0,
+          right: 0,
+        }}
+      >
+        <Box
+          sx={{
+            background: "#aaa",
+            display: "flex",
+            borderRadius: "60px",
+            ".working-nav-link": {
+              width: "130px",
+              height: "36px",
+              cursor: "pointer",
+            },
+          }}
+        >
+          <Link
+            className="working-nav-link"
+            to="/"
+            onMouseEnter={openEnter}
+            onMouseLeave={openLeave}
+          >
+            <Box></Box>
+          </Link>
+          <Link
+            className="working-nav-link"
+            to="/projects"
+            onMouseEnter={openEnter}
+            onMouseLeave={openLeave}
+          >
+            <Box></Box>
+          </Link>
+          <Link
+            className="working-nav-link"
+            to="/contact"
+            onMouseEnter={openEnter}
+            onMouseLeave={openLeave}
+          >
+            <Box></Box>
+          </Link>
+        </Box>
+      </Box>
+      <Box sx={{ height: "200rem" }}>
         <AnimatedProjectsTitle />
         muhaha
       </Box>
