@@ -729,6 +729,7 @@ export function LoaderView() {
                 fontWeight: 400,
                 fontSize: 14,
                 textShadow: "0 0 3px #fff",
+                textAlign: "center",
               }}
               className="body1"
               initial={{ opacity: 0 }}
