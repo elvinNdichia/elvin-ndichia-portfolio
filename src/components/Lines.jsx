@@ -8,9 +8,9 @@ export function Lines() {
   const isLaptop = useMediaQuery(theme.breakpoints.up("md"));
 
   let numLines;
-  if (isMobile) numLines = 3;
-  else if (isTablet) numLines = 7;
-  else if (isLaptop) numLines = 13;
+  if (isMobile) numLines = 7;
+  else if (isTablet) numLines = 13;
+  else if (isLaptop) numLines = 25;
 
   let linesContainerPadding = "0 16px";
   if (isTablet) linesContainerPadding = "0 32px";
