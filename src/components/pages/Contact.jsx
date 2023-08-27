@@ -347,8 +347,6 @@ export function Contact() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          position: "relative",
-          bottom: { xs: "56px", md: 0 },
         }}
       >
         <Box sx={{ zIndex: 1 }}>
@@ -357,6 +355,11 @@ export function Contact() {
             openLeave={openLeave}
             quickEnter={quickEnter}
             quickLeave={quickLeave}
+          />
+          <Box
+            sx={{
+              height: { xs: "56px", md: "64px" },
+            }}
           />
         </Box>
       </Box>

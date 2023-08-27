@@ -244,12 +244,10 @@ export function Home() {
       <Box
         sx={{
           width: "100vw",
-          position: "relative",
           height: { xs: "calc(100vh - 56px)", md: "calc(100vh - 64px)" },
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          bottom: { xs: "56px", md: 0 },
         }}
       >
         <Box sx={{ zIndex: 1 }}>
@@ -258,6 +256,11 @@ export function Home() {
             openLeave={openLeave}
             quickEnter={quickEnter}
             quickLeave={quickLeave}
+          />
+          <Box
+            sx={{
+              height: { xs: "56px", md: "64px" },
+            }}
           />
         </Box>
         <Box
