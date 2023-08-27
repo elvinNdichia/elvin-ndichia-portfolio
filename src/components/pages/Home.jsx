@@ -244,10 +244,12 @@ export function Home() {
       <Box
         sx={{
           width: "100vw",
+          position: "relative",
           height: { xs: "calc(100vh - 56px)", md: "calc(100vh - 64px)" },
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          bottom: { xs: "56px", md: 0 },
         }}
       >
         <Box sx={{ zIndex: 1 }}>
