@@ -178,17 +178,6 @@ const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
             </div>
           </motion.div>
         </div>
-        <Box
-          sx={{
-            position: "fixed",
-            bottom: "-150px",
-            right: "-50px",
-          }}
-        >
-          <motion.div variants={imageVariants}>
-            <Box component="img" sx={{ width: "300px" }} src="hello-hand.png" />
-          </motion.div>
-        </Box>
       </motion.div>
     </Box>
   );
@@ -261,13 +250,28 @@ export function Home() {
           justifyContent: "center",
         }}
       >
-        <Box>
+        <Box sx={{ zIndex: 1 }}>
           <AnimatedLines
             openEnter={openEnter}
             openLeave={openLeave}
             quickEnter={quickEnter}
             quickLeave={quickLeave}
           />
+        </Box>
+        <Box
+          sx={{
+            position: "fixed",
+            bottom: { xs: "-50px", md: "-150px" },
+            right: { xs: "-10px", md: "-50px" },
+          }}
+        >
+          <motion.div variants={imageVariants}>
+            <Box
+              component="img"
+              sx={{ width: { xs: "160px", md: "250px" } }}
+              src="hello-hand.png"
+            />
+          </motion.div>
         </Box>
       </Box>
     </Box>
