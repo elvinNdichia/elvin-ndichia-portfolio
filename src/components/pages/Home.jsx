@@ -41,63 +41,121 @@ const imageVariants = {};
 
 const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
   return (
-    <Box sx={{ paddingTop: "80px", ".h1": { textAlign: "center" } }}>
+    <Box sx={{ paddingTop: "80px", ".home-h1": { textAlign: "center" } }}>
       <motion.div
         variants={sentenceVariants}
         initial="hidden"
         animate="visible"
       >
         <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            Hi, I am Elvin. A Frontend
+          <motion.h1 variants={lineVariants} className="home-h1">
+            <Box sx={{ display: { xs: "none", md: "block" } }}>
+              Hi, I am Elvin. A Frontend
+            </Box>
+            <Box sx={{ display: { xs: "block", md: "none" } }}>
+              Hi, I am Elvin. A Frontend
+            </Box>
           </motion.h1>
         </div>
         <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            developer who turns complex
+          <motion.h1 variants={lineVariants} className="home-h1">
+            <Box sx={{ display: { xs: "none", md: "block" } }}>
+              developer who turns complex
+            </Box>
+            <Box sx={{ display: { xs: "block", md: "none" } }}>
+              developer who turns
+            </Box>
           </motion.h1>
         </div>
         <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            designs into clean, user-friendly
+          <motion.h1 variants={lineVariants} className="home-h1">
+            <Box sx={{ display: { xs: "none", md: "block" } }}>
+              designs into clean, user-friendly
+            </Box>
+            <Box sx={{ display: { xs: "block", md: "none" } }}>
+              complex designs into clean,
+            </Box>
           </motion.h1>
         </div>
         <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            interfaces. I’m{" "}
-            <a
-              onMouseEnter={quickEnter}
-              onMouseLeave={quickLeave}
-              style={{ textDecoration: "underline" }}
-            >
-              quick
-            </a>{" "}
-            but I don’t
+          <motion.h1 variants={lineVariants} className="home-h1">
+            <Box sx={{ display: { xs: "none", md: "block" } }}>
+              interfaces. I’m{" "}
+              <a
+                onMouseEnter={quickEnter}
+                onMouseLeave={quickLeave}
+                style={{ textDecoration: "underline" }}
+              >
+                quick
+              </a>{" "}
+              but I don’t
+            </Box>
+            <Box sx={{ display: { xs: "block", md: "none" } }}>
+              user-friendly interfaces. I’m
+            </Box>
           </motion.h1>
         </div>
         <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            let a single detail slip thanks to
+          <motion.h1 variants={lineVariants} className="home-h1">
+            <Box sx={{ display: { xs: "none", md: "block" } }}>
+              let a single detail slip thanks to
+            </Box>
+            <Box sx={{ display: { xs: "block", md: "none" } }}>
+              <a style={{ textDecoration: "underline" }}>quick</a> but I don’t
+              let a
+            </Box>
           </motion.h1>
         </div>
         <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            my background in UX design and
+          <motion.h1 variants={lineVariants} className="home-h1">
+            <Box sx={{ display: { xs: "none", md: "block" } }}>
+              my background in UX Design and
+            </Box>
+            <Box sx={{ display: { xs: "block", md: "none" } }}>
+              single detail slip thanks to
+            </Box>
           </motion.h1>
         </div>
         <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            deep knowledge on Frontend
+          <motion.h1 variants={lineVariants} className="home-h1">
+            <Box sx={{ display: { xs: "none", md: "block" } }}>
+              deep knowledge on Frontend
+            </Box>
+            <Box sx={{ display: { xs: "block", md: "none" } }}>
+              my background in UX
+            </Box>
           </motion.h1>
         </div>
         <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            technologies, particularly React
+          <motion.h1 variants={lineVariants} className="home-h1">
+            <Box sx={{ display: { xs: "none", md: "block" } }}>
+              technologies, particularly React
+            </Box>
+            <Box sx={{ display: { xs: "block", md: "none" } }}>
+              Design and deep knowledge
+            </Box>
           </motion.h1>
         </div>
         <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            ecosystem
+          <motion.h1 variants={lineVariants} className="home-h1">
+            <Box sx={{ display: { xs: "none", md: "block" } }}>ecosystem</Box>
+            <Box sx={{ display: { xs: "block", md: "none" } }}>
+              on Frontend technologies,
+            </Box>
+          </motion.h1>
+        </div>
+        <div style={{ overflow: "hidden" }}>
+          <motion.h1 variants={lineVariants} className="home-h1">
+            <Box sx={{ display: { xs: "none", md: "block" } }}></Box>
+            <Box sx={{ display: { xs: "block", md: "none" } }}>
+              particularly React
+            </Box>
+          </motion.h1>
+        </div>
+        <div style={{ overflow: "hidden" }}>
+          <motion.h1 variants={lineVariants} className="home-h1">
+            <Box sx={{ display: { xs: "none", md: "block" } }}></Box>
+            <Box sx={{ display: { xs: "block", md: "none" } }}>ecosystem</Box>
           </motion.h1>
         </div>
         <div

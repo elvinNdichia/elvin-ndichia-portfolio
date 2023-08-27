@@ -56,7 +56,7 @@ const projectVariants = {
     top: 0,
     transition: {
       duration: 0.5,
-      delay: 1,
+      delay: 0.8,
     },
   },
 };
