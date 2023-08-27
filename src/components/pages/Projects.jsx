@@ -269,6 +269,109 @@ const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
               </div>
             </Box>
           </a>
+          <Box sx={{ marginTop: { xs: "32px", md: "124px" } }} />
+          <a
+            href="https://voila-elvin-ndichia.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#000", textDecoration: "none" }}
+            onMouseEnter={openEnter}
+            onMouseLeave={openLeave}
+          >
+            <Box
+              sx={{
+                overflow: "hidden",
+                display: "grid",
+                gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
+                position: "relative",
+              }}
+            >
+              <motion.div
+                variants={projectVariants}
+                style={{
+                  position: "relative",
+                  display: "block",
+                  marginTop: "14px",
+                }}
+              >
+                <Box
+                  sx={{ maxWidth: "100%", borderRadius: "4px" }}
+                  component="img"
+                  src="app-test.png"
+                />
+              </motion.div>
+              <div style={{ marginLeft: "16px", paddingTop: "1rem" }}>
+                <div style={{ overflow: "hidden" }}>
+                  <motion.div
+                    variants={boxVariants}
+                    style={{
+                      position: "relative",
+                      display: "block",
+                    }}
+                  >
+                    <h2 className="h2">Voila.</h2>
+                  </motion.div>
+                </div>
+                <div style={{ overflow: "hidden" }}>
+                  <motion.div
+                    variants={boxVariants}
+                    style={{
+                      position: "relative",
+                      display: "block",
+                      maxWidth: "600px",
+                      marginTop: "10px",
+                    }}
+                  >
+                    <p className="body1">
+                      A landing page that demonstrates my ability to implement
+                      advanced scroll animations
+                    </p>
+                  </motion.div>
+                </div>
+                <div style={{ overflow: "hidden", marginTop: "10px" }}>
+                  <motion.div
+                    variants={boxVariants}
+                    style={{
+                      position: "relative",
+                      display: "block",
+                      maxWidth: "600px",
+                    }}
+                  >
+                    <Chip svg={htmlSVG} label="HTML" />
+                    <Chip svg={cssSVG} label="CSS" />
+                    <Chip svg={javascriptSVG} label="JavaScript" />
+                    <Chip svg={reactSVG} label="React" />
+                  </motion.div>
+                </div>
+                <div style={{ overflow: "hidden" }}>
+                  <motion.div
+                    variants={boxVariants}
+                    style={{
+                      position: "relative",
+                      display: "block",
+                      maxWidth: "600px",
+                    }}
+                  >
+                    <Chip svg={muiSVG} label="MUI" />
+                    <Chip svg={framerSVG} label="Framer Motion" />
+                    <Chip svg={firebaseSVG} label="Firebase" />
+                  </motion.div>
+                </div>
+                <div style={{ overflow: "hidden" }}>
+                  <motion.div
+                    variants={boxVariants}
+                    style={{
+                      position: "relative",
+                      display: "block",
+                      maxWidth: "600px",
+                    }}
+                  >
+                    <Chip svg={figmaSVG} label="Figma" />
+                  </motion.div>
+                </div>
+              </div>
+            </Box>
+          </a>
         </motion.div>
       </Box>
     </>
