@@ -5,6 +5,7 @@ import { Box as MuiBox } from "@mui/system";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { NavigateButton } from "../NavigateButton";
+import { useState } from "react";
 
 const Box = motion(MuiBox);
 
@@ -39,46 +40,105 @@ const boxVariants = {
 };
 const imageVariants = {};
 
-function AnimatedProjectsTitle() {
+const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
+  const [thingBeingHovered, setThingBeingHovered] = useState("");
+
+  const getOpacity = (hoverKey) => {
+    return thingBeingHovered === hoverKey || thingBeingHovered === "" ? 1 : 0.5;
+  };
+
   return (
-    <Box sx={{ paddingTop: "80px", h1: { textAlign: "center" } }}>
-      <motion.div
-        variants={sentenceVariants}
-        initial="hidden"
-        animate="visible"
+    <>
+      {/* Mobile Below */}
+      <Box
+        sx={{
+          paddingTop: { xs: "80px", md: "100px" },
+          ".h1": { textAlign: "center" },
+          ".h5": {
+            textShadow: `
+            -1px -1px 0 #fff,  
+            1px -1px 0 #fff,
+            -1px 1px 0 #fff,
+            1px 1px 0 #fff
+          `,
+          },
+          display: { xs: "block", md: "block" },
+        }}
       >
-        <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            My next projects will always be
-          </motion.h1>
-        </div>
-        <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            significantly better than these 2
-          </motion.h1>
-        </div>
-        <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            side works
-          </motion.h1>
-        </div>
-        <div>
-          <motion.div
-            variants={boxVariants}
+        <motion.div
+          variants={sentenceVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <div style={{ overflow: "hidden" }}>
+            <motion.h1 variants={lineVariants} className="h1">
+              <Box sx={{ display: { xs: "none", md: "block" } }}>
+                My next projects will always
+              </Box>
+              <Box sx={{ display: { xs: "block", md: "none" } }}>
+                My next projects
+              </Box>
+            </motion.h1>
+          </div>
+          <div style={{ overflow: "hidden" }}>
+            <motion.h1 variants={lineVariants} className="h1">
+              <Box sx={{ display: { xs: "none", md: "block" } }}>
+                be significantly better
+              </Box>
+              <Box sx={{ display: { xs: "block", md: "none" } }}>
+                will always be
+              </Box>
+            </motion.h1>
+          </div>
+          <div style={{ overflow: "hidden" }}>
+            <motion.h1 variants={lineVariants} className="h1">
+              <Box sx={{ display: { xs: "none", md: "block" } }}>
+                than these 2 side
+              </Box>
+              <Box sx={{ display: { xs: "block", md: "none" } }}>
+                significantly better
+              </Box>
+            </motion.h1>
+          </div>
+          <div style={{ overflow: "hidden" }}>
+            <motion.h1 variants={lineVariants} className="h1">
+              <Box sx={{ display: { xs: "none", md: "block" } }}>works</Box>
+              <Box sx={{ display: { xs: "block", md: "none" } }}>
+                than these 2 side
+              </Box>
+            </motion.h1>
+          </div>
+          <div style={{ overflow: "hidden" }}>
+            <motion.h1 variants={lineVariants} className="h1">
+              <Box sx={{ display: { xs: "block", md: "none" } }}>works</Box>
+            </motion.h1>
+          </div>
+          <div
             style={{
-              width: "100px",
-              background: "#ddd",
-              position: "relative",
-              display: "block",
+              overflow: "hidden",
+              display: "flex",
+              justifyContent: "center",
             }}
           >
-            Hello
-          </motion.div>
-        </div>
-      </motion.div>
-    </Box>
+            <motion.div
+              variants={boxVariants}
+              style={{
+                position: "relative",
+                display: "block",
+                marginTop: "14px",
+              }}
+            >
+              <div onMouseEnter={openEnter} onMouseLeave={openLeave}>
+                <NavigateButton location="Contact" link="/contact" />
+              </div>
+            </motion.div>
+          </div>
+          <div style={{ marginTop: "56px" }} />
+        </motion.div>
+      </Box>
+    </>
   );
-}
+};
 
 export function Projects() {
   const { quickEnter, quickLeave, openEnter, openLeave } = useCursorContext();
@@ -140,8 +200,12 @@ export function Projects() {
         </Box>
       </Box>
       <Box sx={{ height: "200rem" }}>
-        <AnimatedProjectsTitle />
-        muhaha
+        <AnimatedLines
+          openEnter={openEnter}
+          openLeave={openLeave}
+          quickEnter={quickEnter}
+          quickLeave={quickLeave}
+        />
       </Box>
     </Box>
   );
