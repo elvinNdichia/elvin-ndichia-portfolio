@@ -15,6 +15,7 @@ import {
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import { Home } from "./pages/Home";
 import { Contact } from "./pages/Contact";
+import { Projects } from "./pages/Projects";
 import {
   htmlSVG,
   cssSVG,
@@ -369,134 +370,6 @@ const boxVariants = {
     },
   },
 };
-
-function AnimatedProjectsTitle() {
-  return (
-    <Box sx={{ h1: { textAlign: "center" } }}>
-      <motion.div
-        variants={sentenceVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            My next projects will always be
-          </motion.h1>
-        </div>
-        <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            significantly better than these 2
-          </motion.h1>
-        </div>
-        <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            side works
-          </motion.h1>
-        </div>
-        <div>
-          <motion.div
-            variants={boxVariants}
-            style={{
-              width: "100px",
-              background: "#ddd",
-              position: "relative",
-              display: "block",
-            }}
-          >
-            Hello
-          </motion.div>
-        </div>
-      </motion.div>
-    </Box>
-  );
-}
-
-const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
-  return (
-    <Box sx={{ paddingTop: "80px", ".h1": { textAlign: "center" } }}>
-      <motion.div
-        variants={sentenceVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            Hi, I am Elvin. A Frontend
-          </motion.h1>
-        </div>
-        <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            developer who turns complex
-          </motion.h1>
-        </div>
-        <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            designs into clean, user-friendly
-          </motion.h1>
-        </div>
-        <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            interfaces. I’m{" "}
-            <a
-              onMouseEnter={quickEnter}
-              onMouseLeave={quickLeave}
-              style={{ textDecoration: "underline" }}
-            >
-              quick
-            </a>{" "}
-            but I don’t
-          </motion.h1>
-        </div>
-        <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            let a single detail slip thanks to
-          </motion.h1>
-        </div>
-        <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            my background in UX design and
-          </motion.h1>
-        </div>
-        <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            deep knowledge on Frontend
-          </motion.h1>
-        </div>
-        <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            technologies, particularly React
-          </motion.h1>
-        </div>
-        <div style={{ overflow: "hidden" }}>
-          <motion.h1 variants={lineVariants} className="h1">
-            ecosystem
-          </motion.h1>
-        </div>
-      </motion.div>
-    </Box>
-  );
-};
-
-/* -------------------- Home END ---------------------------- */
-/* -------------------- Projects START ---------------------------- */
-function Projects() {
-  return (
-    <Box
-      sx={{
-        height: "100vh",
-        width: "90vw",
-      }}
-    >
-      <Box sx={{ height: "200vh", background: "#eee" }}>
-        <AnimatedProjectsTitle />
-      </Box>
-    </Box>
-  );
-}
-/* -------------------- Projects END ---------------------------- */
-/* -------------------- Contact START ---------------------------- */
-
-/* -------------------- Contact END ---------------------------- */
 
 /* -------------------- Logo animation start ---------------------------- */
 
