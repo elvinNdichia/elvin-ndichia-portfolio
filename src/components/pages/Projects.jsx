@@ -1,7 +1,18 @@
 import { CursorContextProvider } from "../CursorContext";
 import { useCursorContext } from "../CursorContext";
 import { Box as MuiBox } from "@mui/system";
-
+import { useMediaQuery, useTheme } from "@mui/material";
+import {
+  htmlSVG,
+  cssSVG,
+  javascriptSVG,
+  reactSVG,
+  muiSVG,
+  reactRouterSVG,
+  framerSVG,
+  firebaseSVG,
+  figmaSVG,
+} from "../svgLogos";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { NavigateButton } from "../NavigateButton";
@@ -38,21 +49,41 @@ const boxVariants = {
     },
   },
 };
-const imageVariants = {};
+const projectVariants = {
+  hidden: { top: "40px", opacity: 0 },
+  visible: {
+    opacity: 1,
+    top: 0,
+    transition: {
+      duration: 0.5,
+      delay: 0.5,
+    },
+  },
+};
 
 const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
+  const isLaptop = useMediaQuery(theme.breakpoints.up("md"));
   const [thingBeingHovered, setThingBeingHovered] = useState("");
 
   const getOpacity = (hoverKey) => {
     return thingBeingHovered === hoverKey || thingBeingHovered === "" ? 1 : 0.5;
   };
 
+  let containerPadding = "0 16px";
+  if (isTablet) containerPadding = "0 32px";
+  if (isLaptop) containerPadding = "0 64px";
+
   return (
     <>
       {/* Mobile Below */}
       <Box
         sx={{
+          padding: containerPadding,
           paddingTop: { xs: "80px", md: "100px" },
+
           ".h1": { textAlign: "center" },
           ".h5": {
             textShadow: `
@@ -134,6 +165,110 @@ const AnimatedLines = ({ openEnter, openLeave, quickEnter, quickLeave }) => {
             </motion.div>
           </div>
           <div style={{ marginTop: "56px" }} />
+          <a
+            href="https://enco-learn.web.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#000", textDecoration: "none" }}
+            onMouseEnter={openEnter}
+            onMouseLeave={openLeave}
+          >
+            <Box
+              sx={{
+                overflow: "hidden",
+                display: "grid",
+                gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
+                position: "relative",
+              }}
+            >
+              <motion.div
+                variants={projectVariants}
+                style={{
+                  position: "relative",
+                  display: "block",
+                  marginTop: "14px",
+                }}
+              >
+                <Box
+                  sx={{ maxWidth: "100%", borderRadius: "4px" }}
+                  component="img"
+                  src="app-test.png"
+                />
+              </motion.div>
+              <div style={{ marginLeft: "16px", paddingTop: "1rem" }}>
+                <div style={{ overflow: "hidden" }}>
+                  <motion.div
+                    variants={boxVariants}
+                    style={{
+                      position: "relative",
+                      display: "block",
+                    }}
+                  >
+                    <h2 className="h2">Notes</h2>
+                  </motion.div>
+                </div>
+                <div style={{ overflow: "hidden" }}>
+                  <motion.div
+                    variants={boxVariants}
+                    style={{
+                      position: "relative",
+                      display: "block",
+                      maxWidth: "600px",
+                      marginTop: "10px",
+                    }}
+                  >
+                    <p className="body1">
+                      A note taking app that demonstrates my ability to
+                      implement advanced micro interactions. You can try out
+                      deleting and searching
+                    </p>
+                  </motion.div>
+                </div>
+                <div style={{ overflow: "hidden", marginTop: "10px" }}>
+                  <motion.div
+                    variants={boxVariants}
+                    style={{
+                      position: "relative",
+                      display: "block",
+                      maxWidth: "600px",
+                    }}
+                  >
+                    <Chip svg={htmlSVG} label="HTML" />
+                    <Chip svg={cssSVG} label="CSS" />
+                    <Chip svg={javascriptSVG} label="JavaScript" />
+                    <Chip svg={reactSVG} label="React" />
+                  </motion.div>
+                </div>
+                <div style={{ overflow: "hidden" }}>
+                  <motion.div
+                    variants={boxVariants}
+                    style={{
+                      position: "relative",
+                      display: "block",
+                      maxWidth: "600px",
+                    }}
+                  >
+                    <Chip svg={muiSVG} label="MUI" />
+                    <Chip svg={reactRouterSVG} label="React Router" />
+                    <Chip svg={framerSVG} label="Framer Motion" />
+                  </motion.div>
+                </div>
+                <div style={{ overflow: "hidden" }}>
+                  <motion.div
+                    variants={boxVariants}
+                    style={{
+                      position: "relative",
+                      display: "block",
+                      maxWidth: "600px",
+                    }}
+                  >
+                    <Chip svg={firebaseSVG} label="Firebase" />
+                    <Chip svg={figmaSVG} label="Figma" />
+                  </motion.div>
+                </div>
+              </div>
+            </Box>
+          </a>
         </motion.div>
       </Box>
     </>
@@ -208,5 +343,30 @@ export function Projects() {
         />
       </Box>
     </Box>
+  );
+}
+
+function Chip({ svg, label }) {
+  return (
+    <div
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        padding: "11px 16px",
+        background: "#eee",
+        borderRadius: "50px",
+        marginRight: "8px",
+        marginTop: "8px",
+      }}
+    >
+      <div
+        style={{ marginRight: "10px", display: "flex", alignItems: "center" }}
+      >
+        {svg}
+      </div>
+      <p style={{ color: "rgba(0, 0, 0, 60)" }} className="body1">
+        {label}
+      </p>
+    </div>
   );
 }
