@@ -620,7 +620,7 @@ export function LoaderView() {
                 ],
               }}
               transition={{
-                opacity: { delay: 1, duration: 1.3 },
+                opacity: { delay: 0.5, duration: 1.3 },
                 textShadow: { duration: 5 },
               }}
             >
