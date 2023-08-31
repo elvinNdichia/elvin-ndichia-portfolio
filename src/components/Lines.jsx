@@ -10,7 +10,7 @@ export function Lines() {
   let numLines;
   if (isMobile) numLines = 7;
   else if (isTablet) numLines = 13;
-  else if (isLaptop) numLines = 25;
+  else if (isLaptop) numLines = 13;
 
   let linesContainerPadding = "0 16px";
   if (isTablet) linesContainerPadding = "0 32px";
